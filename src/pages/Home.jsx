@@ -1,9 +1,8 @@
 import React, { lazy } from 'react';
 
-// Lazy loaded components for better performance
-const Hero = lazy(() => import('../components/Hero'));
+import Hero from '../components/Hero';
+import About from '../components/About';
 const Services = lazy(() => import('../components/Services'));
-const About = lazy(() => import('../components/About'));
 const Contact = lazy(() => import('../components/Contact'));
 const WhatsAppWidget = lazy(() => import('../components/WhatsAppWidget'));
 

@@ -34,7 +34,7 @@ const DubaiHero = () => (
         <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-r from-primary-950/90 via-primary-950/70 to-transparent z-10" />
             <img 
-                src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80" 
+                src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=60&w=1200" 
                 alt="Dubai Skyline" 
                 className="w-full h-full object-cover opacity-40 scale-110"
             />

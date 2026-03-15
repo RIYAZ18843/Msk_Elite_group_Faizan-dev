@@ -21,6 +21,7 @@ import {
     MdGavel,
     MdBalance
 } from 'react-icons/md';
+import EMICalculator from '../components/EMICalculator';
 
 // --- SUB-COMPONENTS ---
 
@@ -29,7 +30,7 @@ const REHero = () => (
         <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-r from-primary-950/95 via-primary-950/80 to-transparent z-10" />
             <img 
-                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80" 
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=60&w=1200" 
                 alt="Modern Real Estate" 
                 className="w-full h-full object-cover opacity-30 scale-105"
             />
@@ -203,7 +204,7 @@ const AuctionSpecialization = () => (
     </section>
 );
 
-const InvestmentCommitment = () => (
+const InvestmentCommitment = ({ onContactClick }) => (
     <section className="py-24 bg-white dark:bg-primary-950 transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-primary-900 rounded-[4rem] p-16 text-white relative flex flex-col items-center text-center overflow-hidden">
@@ -231,6 +232,7 @@ const InvestmentCommitment = () => (
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
+                        onClick={onContactClick}
                         className="px-12 py-5 bg-white text-primary-900 rounded-2xl font-black text-xl shadow-2xl flex items-center justify-center space-x-2"
                     >
                         <span>Consult Finance Expert</span>
@@ -244,7 +246,7 @@ const InvestmentCommitment = () => (
 
 // --- MAIN PAGE COMPONENT ---
 
-export default function RealEstate() {
+export default function RealEstate({ onContactClick }) {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -254,8 +256,9 @@ export default function RealEstate() {
             <REHero />
             <REOverview />
             <RegionsGrid />
+            <EMICalculator onContactClick={onContactClick} />
             <AuctionSpecialization />
-            <InvestmentCommitment />
+            <InvestmentCommitment onContactClick={onContactClick} />
         </div>
     );
 }

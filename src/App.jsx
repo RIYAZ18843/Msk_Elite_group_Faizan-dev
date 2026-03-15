@@ -39,7 +39,7 @@ function App() {
             <Suspense fallback={<LoadingScreen />}>
               <Routes>
                 <Route path="/" element={<Home onContactClick={() => setIsContactModalOpen(true)} />} />
-                <Route path="/real-estate" element={<RealEstate />} />
+                <Route path="/real-estate" element={<RealEstate onContactClick={() => setIsContactModalOpen(true)} />} />
                 <Route path="/training" element={<Training />} />
                 <Route path="/dubai-banking" element={<DubaiBanking />} />
                 <Route path="/recovery-banking" element={<RecoveryBanking />} />

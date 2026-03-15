@@ -31,7 +31,7 @@ const RecoveryHero = () => (
         <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-r from-primary-950/95 via-primary-950/80 to-transparent z-10" />
             <img 
-                src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80" 
+                src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=60&w=1200" 
                 alt="Recovery Services" 
                 className="w-full h-full object-cover opacity-30 brightness-50"
             />

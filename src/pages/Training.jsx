@@ -31,7 +31,7 @@ const TrainingHero = () => (
         <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-br from-primary-950/90 via-primary-950/70 to-transparent z-10" />
             <img 
-                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80" 
+                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=60&w=1200" 
                 alt="Training Center" 
                 className="w-full h-full object-cover opacity-40 scale-105"
             />
