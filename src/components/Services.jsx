@@ -68,8 +68,8 @@ export default function Services({ onContactClick }) {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl sm:text-5xl font-bold text-primary-900 dark:text-primary-50 mb-4">
-                        <span className="text-gradient">
+                    <h2 className="text-4xl sm:text-5xl font-bold text-primary-900 mb-4">
+                        <span className="text-gradient dark:from-primary-400 dark:to-accent-400">
                             Our Banking Services
                         </span>
                     </h2>

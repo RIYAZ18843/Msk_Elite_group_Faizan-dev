@@ -66,21 +66,21 @@ export default function About() {
 
                         {/* Mission & Vision */}
                         <div className="space-y-6">
-                            <div className="bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-900/40 dark:to-primary-800/20 rounded-xl p-6 border-l-4 border-primary-600 dark:border-primary-400">
-                                <h3 className="text-xl font-bold text-primary-900 dark:text-primary-100 mb-2">
+                            <div className="bg-gradient-to-r from-primary-50 to-accent-50 rounded-xl p-6 border-l-4 border-primary-600">
+                                <h3 className="text-xl font-bold text-primary-900 mb-2">
                                     Our Mission
                                 </h3>
-                                <p className="text-gray-700 dark:text-primary-200">
+                                <p className="text-gray-700">
                                     To enable banks and financial institutions to recover bad loans efficiently, 
                                     reduce the burden on civil courts, and maintain financial stability through ethical recovery.
                                 </p>
                             </div>
 
-                            <div className="bg-gradient-to-r from-accent-50 to-primary-50 dark:from-accent-900/20 dark:to-primary-900/40 rounded-xl p-6 border-l-4 border-accent-600 dark:border-accent-400">
-                                <h3 className="text-xl font-bold text-primary-900 dark:text-primary-100 mb-2">
+                            <div className="bg-gradient-to-r from-accent-50 to-primary-50 rounded-xl p-6 border-l-4 border-accent-600">
+                                <h3 className="text-xl font-bold text-primary-900 mb-2">
                                     Our Vision
                                 </h3>
-                                <p className="text-gray-700 dark:text-primary-200">
+                                <p className="text-gray-700">
                                     To be the most trusted and customer-centric recovery firm, recognized for innovation, 
                                     transparency, and transformative impact in the banking sector.
                                 </p>
@@ -102,7 +102,7 @@ export default function About() {
                                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                                 transition={{ delay: 0.4 + index * 0.1 }}
                                 whileHover={{ scale: 1.05 }}
-                                className="bg-white dark:bg-primary-900/40 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-primary-700/30"
+                                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
                             >
                                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-primary-600 to-accent-500 mb-4 shadow-lg">
                                     <value.icon className="w-7 h-7 text-white" />

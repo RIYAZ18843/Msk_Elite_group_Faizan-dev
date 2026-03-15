@@ -56,7 +56,7 @@ export default function Navbar({ onContactClick }) {
                         <img 
                             src="/logo.png" 
                             alt="Chartfield Services" 
-                            className={`w-24 h-24 object-contain group-hover:scale-110 transition-transform duration-300 ${theme === 'light' ? 'mix-blend-multiply' : ''}`} 
+                            className="w-24 h-24 object-contain group-hover:scale-110 transition-transform duration-300 mix-blend-multiply" 
                             style={{ isolation: 'isolate' }}
                         />
                         <div className="flex flex-col">

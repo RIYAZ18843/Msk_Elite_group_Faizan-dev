@@ -62,7 +62,7 @@ export default function Footer({ onContactClick }) {
     };
 
     return (
-        <footer className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white transition-colors duration-500">
+        <footer className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                     {/* Company Info */}
@@ -71,7 +71,7 @@ export default function Footer({ onContactClick }) {
                             <img
                                 src="/logo.png"
                                 alt="Chartfield Services"
-                                className="w-32 h-32 object-contain flex-shrink-0"
+                                className="w-32 h-32 object-contain mix-blend-multiply flex-shrink-0"
                                 style={{ isolation: 'isolate' }}
                             />
                             <div>
