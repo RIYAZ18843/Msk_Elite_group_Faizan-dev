@@ -1,8 +1,5 @@
-'use client';
-
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import {
     HiMail,
     HiPhone,
@@ -10,7 +7,7 @@ import {
     HiClock,
 } from 'react-icons/hi';
 
-export default function Contact() {
+export default function Contact({ onContactClick }) {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: '-100px' });
 
@@ -18,19 +15,19 @@ export default function Contact() {
         {
             icon: HiPhone,
             title: 'Phone',
-            details: '+91 8790754529',
+            details: '+91 833 1979 865',
             color: 'from-primary-500 to-primary-700',
         },
         {
             icon: HiMail,
             title: 'Email',
-            details: 'info@mskelitegroup.com',
+            details: 'admin@chartfieldservices.com',
             color: 'from-accent-500 to-accent-700',
         },
         {
             icon: HiLocationMarker,
             title: 'Location',
-            details: 'Pillar Number 35, Mehidipatnam, Hyderabad',
+            details: '13-6-437/2/A/4/A Flat 202, Second Floor, Guddimalkapur, Hyderabad - 28',
             color: 'from-primary-600 to-primary-800',
         },
         {
@@ -55,12 +52,12 @@ export default function Contact() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl sm:text-5xl font-display font-bold text-primary-900 dark:text-primary-50 mb-4">
+                    <h2 className="text-4xl sm:text-5xl font-bold text-primary-900 dark:text-primary-50 mb-4">
                         <span className="text-gradient">Get In Touch</span>
                     </h2>
                     <p className="text-xl text-gray-600 dark:text-primary-200 max-w-3xl mx-auto">
-                        Ready to transform your team? Contact us today to discuss your
-                        training needs and discover how we can help you achieve your goals.
+                        Ready to secure your business stability? Contact us today to discuss your 
+                        banking and recovery needs and discover how our strategic solutions can help you.
                     </p>
                 </motion.div>
 
@@ -80,7 +77,7 @@ export default function Contact() {
                             >
                                 <info.icon className="w-7 h-7 text-white" />
                             </div>
-                            <h3 className="text-lg font-display font-bold text-gray-900 dark:text-white mb-2">
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
                                 {info.title}
                             </h3>
                             <p className="text-gray-600 dark:text-primary-200 group-hover:text-primary-600 dark:group-hover:text-accent-400 transition-colors">{info.details}</p>
@@ -100,23 +97,24 @@ export default function Contact() {
                     <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent-500/20 rounded-full blur-3xl" />
 
                     <div className="relative z-10">
-                        <h3 className="text-3xl sm:text-4xl font-display font-bold text-white mb-4">
-                            Start Your Training Journey Today
+                        <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+                            Start Your Recovery Partnership Today
                         </h3>
                         <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-                            Connect with our experts to create a customized training program
-                            that aligns with your organizational objectives.
+                            Connect with our experts to create a strategic asset management 
+                            plan that aligns with your financial objectives.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <motion.div
+                            <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="px-8 py-4 bg-white text-primary-700 rounded-xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 inline-flex items-center space-x-2 cursor-default"
+                                onClick={onContactClick}
+                                className="px-8 py-4 bg-white text-primary-700 rounded-xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 inline-flex items-center space-x-2"
                             >
-                                <span>WhatsApp Us</span>
-                            </motion.div>
+                                <span>Get Started Now</span>
+                            </motion.button>
                             <motion.a
-                                href="mailto:info@mskelitegroup.com"
+                                href="mailto:admin@chartfieldservices.com"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-xl font-semibold text-lg hover:bg-white hover:text-primary-700 transition-all duration-300"

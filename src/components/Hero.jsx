@@ -1,10 +1,9 @@
-'use client';
-
+import React from 'react';
 import { motion } from 'framer-motion';
 import { HiArrowRight, HiSparkles } from 'react-icons/hi';
 
-export default function Hero() {
-    const scrollToSection = (href: string) => {
+export default function Hero({ onContactClick }) {
+    const scrollToSection = (href) => {
         const element = document.querySelector(href);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
@@ -54,7 +53,7 @@ export default function Hero() {
                 >
                     <HiSparkles className="text-accent-500 w-5 h-5 flex-shrink-0" />
                     <span className="text-sm font-semibold text-primary-900 dark:text-primary-100">
-                        Transform Your Workforce
+                        Strategic Asset Recovery
                     </span>
                 </motion.div>
 
@@ -62,11 +61,11 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold mb-6 tracking-tight"
+                    className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 tracking-tight"
                 >
-                    <span className="text-primary-900 dark:text-primary-50">Elevate Your Team with</span>
+                    <span className="text-primary-900 dark:text-primary-50">Maximize Recoveries with</span>
                     <br />
-                    <span className="text-gradient text-glow">Elite Training Solutions</span>
+                    <span className="text-gradient text-glow">Strategic Banking Solutions</span>
                 </motion.h1>
 
                 <motion.p
@@ -75,8 +74,8 @@ export default function Hero() {
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className="text-xl sm:text-2xl text-gray-600 dark:text-primary-200 mb-12 max-w-3xl mx-auto leading-relaxed"
                 >
-                    Empowering professionals through comprehensive corporate training in
-                    Communication, HR, Finance, SAP, and ERP. Your success is our mission.
+                    Empowering financial institutions through comprehensive stressed asset management, 
+                    field intelligence, and ethical recovery services. Your stability is our mission.
                 </motion.p>
 
                 <motion.div
@@ -98,7 +97,7 @@ export default function Hero() {
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => scrollToSection('#contact')}
+                        onClick={onContactClick}
                         className="px-8 py-4 bg-white text-primary-600 rounded-xl font-semibold text-lg shadow-xl hover:shadow-lg transition-all duration-300 border-2 border-primary-200"
                     >
                         Contact Us
@@ -113,10 +112,10 @@ export default function Hero() {
                     className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 max-w-5xl mx-auto"
                 >
                     {[
-                        { number: '500+', label: 'Companies Trained' },
-                        { number: '10K+', label: 'Professionals' },
+                        { number: '50+', label: 'Banks Supported' },
+                        { number: '500Cr+', label: 'Assets Managed' },
                         { number: '15+', label: 'Years Experience' },
-                        { number: '98%', label: 'Success Rate' },
+                        { number: '96%', label: 'Recovery Rate' },
                     ].map((stat, index) => (
                         <motion.div
                             key={stat.label}
@@ -128,7 +127,7 @@ export default function Hero() {
                         >
                             <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary-100/50 to-transparent rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110" />
                             <div className="relative z-10">
-                                <div className="text-3xl sm:text-4xl font-display font-bold text-primary-600 bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-400 mb-2">
+                                <div className="text-3xl sm:text-4xl font-bold text-primary-600 bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-400 mb-2">
                                     {stat.number}
                                 </div>
                                 <div className="text-sm text-gray-600 dark:text-primary-300 font-semibold tracking-wide">

@@ -1,8 +1,5 @@
-'use client';
-
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import {
     HiChatAlt2,
     HiUserGroup,
@@ -11,48 +8,48 @@ import {
     HiCog,
 } from 'react-icons/hi';
 
-export default function Services() {
+export default function Services({ onContactClick }) {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: '-100px' });
 
     const services = [
         {
-            icon: HiChatAlt2,
-            title: 'Communication Training',
+            icon: HiCurrencyDollar,
+            title: 'Retail & MSME Recoveries',
             description:
-                'Master effective communication skills, presentation techniques, and interpersonal dynamics to excel in professional environments.',
+                'End-to-end recovery solutions for retail portfolios and MSME loans, ensuring maximum return while maintaining compliance.',
             color: 'from-primary-500 to-primary-700',
             shadowColor: 'group-hover:shadow-primary-500/50',
         },
         {
             icon: HiUserGroup,
-            title: 'HR Training',
+            title: 'Corporate Loan Recovery',
             description:
-                'Comprehensive HR management training covering recruitment, employee relations, performance management, and organizational development.',
+                'Expert management of corporate delinquency and NPA accounts through strategic intervention and legal support.',
             color: 'from-accent-500 to-accent-700',
             shadowColor: 'group-hover:shadow-accent-500/50',
         },
         {
-            icon: HiCurrencyDollar,
-            title: 'Finance Training',
+            icon: HiChip,
+            title: 'Advanced Asset Tracing',
             description:
-                'Build financial expertise with training in accounting, budgeting, financial analysis, and strategic financial planning.',
+                'Utilizing technology-driven tracing tools and field intelligence to identify and locate physical assets globally.',
             color: 'from-primary-600 to-primary-800',
             shadowColor: 'group-hover:shadow-primary-600/50',
         },
         {
-            icon: HiChip,
-            title: 'SAP Basics Training',
+            icon: HiChatAlt2,
+            title: 'Legal Process Support',
             description:
-                'Get started with SAP fundamentals, navigation, and core modules to enhance your enterprise resource planning capabilities.',
+                'Full support for SARFAESI Act procedures, bank policies, and statutory laws to expedite recovery lifecycles.',
             color: 'from-accent-600 to-accent-800',
             shadowColor: 'group-hover:shadow-accent-600/50',
         },
         {
             icon: HiCog,
-            title: 'ERP Utilization',
+            title: 'Stressed Asset Management',
             description:
-                'Optimize business processes with comprehensive ERP training, system integration, and best practices for maximum efficiency.',
+                'Comprehensive management of delinquent assets, focusing on financial restructuring and results-oriented recoveries.',
             color: 'from-primary-700 to-primary-900',
             shadowColor: 'group-hover:shadow-primary-700/50',
         },
@@ -71,14 +68,14 @@ export default function Services() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl sm:text-5xl font-display font-bold text-primary-900 mb-4">
-                        <span className="text-gradient dark:from-primary-400 dark:to-accent-400">
-                            Our Training Services
+                    <h2 className="text-4xl sm:text-5xl font-bold text-primary-900 dark:text-primary-50 mb-4">
+                        <span className="text-gradient">
+                            Our Banking Services
                         </span>
                     </h2>
                     <p className="text-xl text-gray-600 dark:text-primary-200 max-w-2xl mx-auto">
-                        Comprehensive corporate training solutions designed to elevate your
-                        team&apos;s skills and drive organizational success.
+                        Result-oriented recovery and asset management solutions designed to secure 
+                        financial stability and maximize institutional results.
                     </p>
                 </motion.div>
 
@@ -105,7 +102,7 @@ export default function Services() {
                             </div>
 
                             {/* Content */}
-                            <h3 className="relative z-10 text-2xl font-display font-bold text-gray-900 dark:text-white mb-4 group-hover:text-primary-600 dark:group-hover:text-accent-400 transition-colors">
+                            <h3 className="relative z-10 text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-primary-600 dark:group-hover:text-accent-400 transition-colors">
                                 {service.title}
                             </h3>
                             <p className="relative z-10 text-gray-600 dark:text-primary-200 leading-relaxed mb-8 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
@@ -137,19 +134,20 @@ export default function Services() {
                     className="mt-16 text-center"
                 >
                     <div className="inline-block bg-gradient-to-r from-primary-600 to-accent-500 rounded-2xl p-8 sm:p-12 shadow-2xl">
-                        <h3 className="text-2xl sm:text-3xl font-display font-bold text-white mb-4">
-                            Ready to Transform Your Team?
+                        <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+                            Ready to Secure Your Assets?
                         </h3>
                         <p className="text-white/90 mb-6 max-w-2xl mx-auto">
-                            Join hundreds of companies that have elevated their workforce with
-                            our expert training programs.
+                            Join dozens of financial institutions that have optimized their
+                            recovery cycles with our expert strategic solutions.
                         </p>
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
+                            onClick={onContactClick}
                             className="px-8 py-4 bg-white text-primary-600 rounded-xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300"
                         >
-                            Schedule a Consultation
+                            Connect with an Expert
                         </motion.button>
                     </div>
                 </motion.div>
