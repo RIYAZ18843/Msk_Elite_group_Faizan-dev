@@ -20,7 +20,7 @@ export default function Navbar({ onContactClick }) {
     }, []);
 
     const navLinks = [
-        { name: 'Home', href: '/#home' },
+        { name: 'Home', href: '/' },
         { name: 'Real Estate', href: '/real-estate' },
         { name: 'Recovery Banking', href: '/recovery-banking' },
         { name: 'Dubai Banking', href: '/dubai-banking' },

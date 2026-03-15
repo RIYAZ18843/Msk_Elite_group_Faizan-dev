@@ -1,5 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import {
     FaFacebookF,
     FaInstagram,
@@ -12,7 +12,7 @@ export default function Footer({ onContactClick }) {
     const currentYear = new Date().getFullYear();
 
     const quickLinks = [
-        { name: 'Home', href: '/#home' },
+        { name: 'Home', href: '/' },
         { name: 'Recovery Banking', href: '/recovery-banking' },
         { name: 'Dubai Banking', href: '/dubai-banking' },
         { name: 'Training & Placement', href: '/training' },
@@ -127,13 +127,13 @@ export default function Footer({ onContactClick }) {
                         <ul className="space-y-3">
                             {quickLinks.map((link) => (
                                 <li key={link.name}>
-                                    <a
-                                        href={link.href}
+                                    <Link
+                                        to={link.href}
                                         className="text-primary-200 hover:text-accent-400 transition-colors duration-200 flex items-center group"
                                     >
                                         <span className="w-0 h-0.5 bg-accent-400 group-hover:w-4 transition-all duration-300 mr-0 group-hover:mr-2"></span>
                                         {link.name}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>

@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './components/ThemeProvider';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -31,7 +31,7 @@ function App() {
 
   return (
     <ThemeProvider>
-      <BrowserRouter>
+      <HashRouter>
         <div className={`min-h-screen antialiased font-sans text-gray-900 dark:text-gray-100`}>
           <div className="bg-noise"></div>
           <Navbar onContactClick={() => setIsContactModalOpen(true)} />
@@ -53,7 +53,7 @@ function App() {
             onClose={() => setIsContactModalOpen(false)} 
           />
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </ThemeProvider>
   );
 }
