@@ -5,6 +5,7 @@ import {
     FaInstagram,
     FaLinkedinIn,
     FaTwitter,
+    FaWhatsapp,
 } from 'react-icons/fa';
 import { HiMail, HiPhone, HiLocationMarker } from 'react-icons/hi';
 
@@ -31,25 +32,25 @@ export default function Footer({ onContactClick }) {
         {
             name: 'Facebook',
             icon: FaFacebookF,
-            href: 'https://www.facebook.com',
+            href: 'https://www.facebook.com/people/charts-field-services/61578501100902/?rdid=IfV5Xe8wi14KL8xZ&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1CWRYXpNDH%2F',
             color: 'hover:bg-blue-600',
         },
         {
             name: 'Instagram',
             icon: FaInstagram,
-            href: 'https://www.instagram.com',
+            href: 'https://www.instagram.com/chartsfieldservices?igsh=MTA1d2tjbThucGJrcA%3D%3D',
             color: 'hover:bg-pink-600',
         },
         {
             name: 'LinkedIn',
             icon: FaLinkedinIn,
-            href: 'https://www.linkedin.com',
+            href: 'https://www.linkedin.com/in/chartsfield-services-ab25283b8/',
             color: 'hover:bg-blue-700',
         },
         {
             name: 'Twitter',
             icon: FaTwitter,
-            href: 'https://www.twitter.com',
+            href: 'https://x.com/charts_field',
             color: 'hover:bg-blue-400',
         },
     ];
@@ -89,35 +90,20 @@ export default function Footer({ onContactClick }) {
                         </p>
                         {/* Social Links */}
                         <div className="flex space-x-3">
-                            {socialLinks.map((social) => {
-                                if (social.name === 'LinkedIn') {
-                                    return (
-                                        <motion.a
-                                            key={social.name}
-                                            href="https://www.linkedin.com/in/faizan-khan-757322288/"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            whileHover={{ scale: 1.1, y: -3 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className={`w-10 h-10 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center ${social.color} transition-all duration-300 shadow-lg`}
-                                            aria-label={social.name}
-                                        >
-                                            <social.icon className="w-5 h-5" />
-                                        </motion.a>
-                                    );
-                                }
-                                return (
-                                    <motion.div
-                                        key={social.name}
-                                        whileHover={{ scale: 1.1, y: -3 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        className={`w-10 h-10 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center ${social.color} transition-all duration-300 shadow-lg cursor-default border border-white/10`}
-                                        aria-label={social.name}
-                                    >
-                                        <social.icon className="w-5 h-5 opacity-80" />
-                                    </motion.div>
-                                );
-                            })}
+                            {socialLinks.map((social) => (
+                                <motion.a
+                                    key={social.name}
+                                    href={social.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    whileHover={{ scale: 1.1, y: -3 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className={`w-10 h-10 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center ${social.color} transition-all duration-300 shadow-lg border border-white/10`}
+                                    aria-label={social.name}
+                                >
+                                    <social.icon className="w-5 h-5" />
+                                </motion.a>
+                            ))}
                         </div>
                     </div>
 
@@ -172,16 +158,16 @@ export default function Footer({ onContactClick }) {
                                     href="tel:+918331979865"
                                     className="text-primary-200 hover:text-accent-400 transition-colors"
                                 >
-                                    +91 833 1979 865
+                                    +91 96402 02170
                                 </a>
                             </li>
                             <li className="flex items-start space-x-3">
                                 <HiMail className="w-5 h-5 text-accent-400 mt-1 flex-shrink-0" />
                                 <a
-                                    href="mailto:admin@chartfieldservices.com"
+                                    href="mailto:hr@chartfieldservices.com"
                                     className="text-primary-200 hover:text-accent-400 transition-colors"
                                 >
-                                    admin@chartfieldservices.com
+                                    hr@chartfieldservices.com
                                 </a>
                             </li>
                         </ul>
