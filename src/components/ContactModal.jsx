@@ -16,27 +16,43 @@ export default function ContactModal({ isOpen, onClose }) {
         e.preventDefault();
         setStatus('submitting');
         
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        console.log('Form Submitted:', formData);
-        setStatus('success');
-        
-        // Auto close after success
-        setTimeout(() => {
-            onClose();
-            // Reset after modal closes
-            setTimeout(() => {
+        try {
+            const response = await fetch('https://formspree.io/f/mzdkpleo', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+                setStatus('success');
+                // Auto close after success
+                setTimeout(() => {
+                    onClose();
+                    // Reset after modal closes
+                    setTimeout(() => {
+                        setStatus('idle');
+                        setFormData({
+                            name: '',
+                            email: '',
+                            phone: '',
+                            service: 'Recovery Banking',
+                            message: ''
+                        });
+                    }, 500);
+                }, 3000);
+            } else {
+                const data = await response.json();
+                console.error('Formspree Error:', data);
                 setStatus('idle');
-                setFormData({
-                    name: '',
-                    email: '',
-                    phone: '',
-                    service: 'Recovery Banking',
-                    message: ''
-                });
-            }, 500);
-        }, 3000);
+                alert('Oops! There was a problem submitting your form. Please try again.');
+            }
+        } catch (error) {
+            console.error('Submission Error:', error);
+            setStatus('idle');
+            alert('Oops! There was a problem submitting your form. Please try again.');
+        }
     };
 
     const handleChange = (e) => {
