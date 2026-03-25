@@ -70,7 +70,7 @@ export default function Footer({ onContactClick }) {
                     <div>
                         <div className="flex items-center space-x-4 mb-6">
                             <img
-                                src="/logo.png"
+                                src="logo.png"
                                 alt="Chartfield Services"
                                 className="w-32 h-32 object-contain mix-blend-multiply flex-shrink-0"
                                 style={{ isolation: 'isolate' }}
