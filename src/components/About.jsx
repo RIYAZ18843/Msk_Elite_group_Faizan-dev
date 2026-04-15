@@ -118,11 +118,12 @@ export default function About() {
                     {services.map((service, index) => (
                         <motion.div
                             key={service.id}
+                            id={service.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}
                             initial={{ opacity: 0, y: 30 }}
                             animate={isInView ? { opacity: 1, y: 0 } : {}}
                             transition={{ delay: index * 0.1, duration: 0.6 }}
                             whileHover={{ y: -5 }}
-                            className="group relative bg-white dark:bg-primary-800/30 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 dark:border-primary-700/50"
+                            className="group relative bg-white dark:bg-primary-800/30 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 dark:border-primary-700/50 scroll-mt-32"
                         >
                             {/* Gradient Background on Hover */}
                             <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />

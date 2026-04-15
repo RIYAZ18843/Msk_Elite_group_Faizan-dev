@@ -12,18 +12,18 @@ export default function Footer({ onContactClick }) {
 
     const quickLinks = [
         { name: 'Home', href: '/' },
-        { name: 'Banking', href: '/banking' },
+        { name: 'Banking', href: '/recovery-banking' },
         { name: 'International Banking', href: '/international-banking' },
         { name: 'Training & Placement', href: '/training' },
         { name: 'Real Estate', href: '/real-estate' },
     ];
 
     const services = [
-        'Digital Marketing',
-        'Software Testing',
-        'UI/UX Design',
-        'Project Management',
-        'Full Stack Developer',
+        { name: 'Digital Marketing', href: '/#digital-marketing' },
+        { name: 'Software Testing', href: '/#software-testing' },
+        { name: 'UI/UX Design', href: '/#uiux-design' },
+        { name: 'Project Management', href: '/#project-management' },
+        { name: 'Full Stack Developer', href: '/#full-stack-developer' },
     ];
 
     const socialLinks = [
@@ -51,18 +51,18 @@ export default function Footer({ onContactClick }) {
                     
                     {/* Company Info */}
                     <div>
-                        <div className="flex items-center space-x-3 mb-4">
+                        <Link to="/" onClick={() => window.scrollTo(0, 0)} className="flex items-center space-x-3 mb-4 group cursor-pointer">
                             <img
                                 src="/image.png"
                                 alt="Chartfield Services"
-                                className="w-12 h-12 object-contain"
+                                className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300"
                                 onError={(e) => { e.target.style.display = 'none' }}
                             />
                             <div>
-                                <h3 className="text-lg font-bold">Chartfield Services</h3>
+                                <h3 className="text-lg font-bold group-hover:text-accent-400 transition-colors">Chartfield Services</h3>
                                 <p className="text-xs text-primary-200">Banking</p>
                             </div>
-                        </div>
+                        </Link>
                         <p className="text-primary-200 text-sm leading-relaxed mb-4">
                             Chartfield Services is a comprehensive banking and financial recovery services organization dedicated to managing stressed, delinquent, and non-performing assets for Banks and Financial Institutions.
                         </p>
@@ -107,11 +107,13 @@ export default function Footer({ onContactClick }) {
                         <h4 className="text-md font-bold mb-4">Our Services</h4>
                         <ul className="space-y-2">
                             {services.map((service) => (
-                                <li
-                                    key={service}
-                                    className="text-primary-200 hover:text-accent-400 text-sm transition-colors duration-200 cursor-pointer"
-                                >
-                                    {service}
+                                <li key={service.name}>
+                                    <Link
+                                        to={service.href}
+                                        className="text-primary-200 hover:text-accent-400 text-sm transition-colors duration-200"
+                                    >
+                                        {service.name}
+                                    </Link>
                                 </li>
                             ))}
                         </ul>

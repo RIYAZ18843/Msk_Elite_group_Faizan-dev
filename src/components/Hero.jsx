@@ -20,49 +20,42 @@ export default function Hero({ onContactClick }) {
     });
 
     const slides = [
-    {
-        imageUrl: "https://images.pexels.com/photos/270404/pexels-photo-270404.jpeg?w=800&h=500&fit=crop",
-        tagline: "Chartfield Services makes content fast & easy",
-        title: "Smart Web & Software Solutions for Modern Businesses",
-        description: "At Chartfield Services, we blend creativity, code, and cutting-edge tech to build dynamic websites and custom software that power your success.",
-        buttonText: "Get started",
-    },
-    {
-        imageUrl: "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?w=800&h=500&fit=crop",
-        tagline: "Chartfield Services makes content fast & easy",
-        title: "Web, Mobile & Enterprise Apps – All Under One Roof",
-        description: "From intuitive websites to powerful business applications, we create scalable solutions tailored to your industry needs. Tech that transforms—crafted by Chartfield Services.",
-        buttonText: "Get started",
-    },
-    {
-        imageUrl: "https://images.pexels.com/photos/6153354/pexels-photo-6153354.jpeg?w=800&h=500&fit=crop",
-        tagline: "Chartfield Services makes content fast & easy",
-        title: "AI-Powered Digital Transformation",
-        description: "Harness the power of artificial intelligence to transform your business with intelligent automation, predictive analytics, and smart decision-making capabilities that give you a competitive edge.",
-        buttonText: "Get started",
-    },
-    {
-        imageUrl: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?w=800&h=500&fit=crop",
-        tagline: "Chartfield Services makes content fast & easy",
-        title: "Intelligent Automation & Cloud Solutions",
-        description: "Leverage cutting-edge AI and cloud technologies to automate processes, reduce costs, and scale your operations seamlessly with our expert solutions.",
-        buttonText: "Get started",
-    },
-    {
-        imageUrl: "https://images.pexels.com/photos/5474295/pexels-photo-5474295.jpeg?w=800&h=500&fit=crop",
-        tagline: "Chartfield Services makes content fast & easy",
-        title: "Future-Ready Enterprise Solutions",
-        description: "Stay ahead of the competition with our future-ready enterprise solutions. From chatbots to predictive models, we build intelligent systems that evolve with your business.",
-        buttonText: "Get started",
-    },
-];
+        {
+            imageUrl: "/hero_web_dev.png",
+            tagline: "Chartfield Services makes content fast & easy",
+            title: "Smart Web & Software Solutions for Modern Businesses",
+            description: "At Chartfield Services, we blend creativity, code, and cutting-edge tech to build dynamic websites and custom software that power your success.",
+            buttonText: "Get started",
+        },
+        {
+            imageUrl: "https://images.pexels.com/photos/1092671/pexels-photo-1092671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+            tagline: "Chartfield Services makes content fast & easy",
+            title: "Premium Mobile Applications for iOS & Android",
+            description: "Scale your business with high-performance mobile apps. We deliver seamless user experiences and robust architectures tailored for the mobile-first world.",
+            buttonText: "Get started",
+        },
+        {
+            imageUrl: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+            tagline: "Chartfield Services makes content fast & easy",
+            title: "Enterprise Software & Cloud Systems",
+            description: "From intuitive websites to powerful business applications, we create scalable solutions tailored to your industry needs. Tech that transforms.",
+            buttonText: "Get started",
+        },
+        {
+            imageUrl: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+            tagline: "Chartfield Services makes content fast & easy",
+            title: "AI-Powered Innovation for Smarter Decision Making",
+            description: "Harness the power of artificial intelligence to transform your business with intelligent automation, predictive analytics, and smart systems.",
+            buttonText: "Get started",
+        },
+    ];
 
     // Number counting animation
     useEffect(() => {
         if (isStatsInView) {
-            const targetNumbers = [7, 80, 5];
-            const duration = 2000; // 2 seconds
-            const stepTime = 20; // Update every 20ms
+            const targetNumbers = [50, 80, 5];
+            const duration = 2000;
+            const stepTime = 20;
 
             targetNumbers.forEach((target, index) => {
                 const steps = duration / stepTime;
@@ -90,7 +83,7 @@ export default function Hero({ onContactClick }) {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
-        }, 5000);
+        }, 6000);
         return () => clearInterval(interval);
     }, [slides.length]);
 
@@ -113,29 +106,26 @@ export default function Hero({ onContactClick }) {
 
     const currentSlide = slides[currentIndex];
 
-    // Why Choose Us Data - Smaller & Compact
+    // Why Choose Us Data - Updated with the latest requested numbers
     const whyChooseUsStats = [
         {
-            number: "7+",
+            number: "50+",
             countKey: "count1",
-            actualNumber: 7,
-            label: "More than 7 customers have experienced.",
+            label: "Global Customers Served Worldwide",
             icon: "👥",
             gradient: "from-blue-500 to-cyan-500",
         },
         {
             number: "80+",
             countKey: "count2",
-            actualNumber: 80,
-            label: "projects development",
+            label: "Successful Projects Completed",
             icon: "📊",
             gradient: "from-purple-500 to-pink-500",
         },
         {
             number: "5+",
             countKey: "count3",
-            actualNumber: 5,
-            label: "More than 5+ years of experience. development",
+            label: "Years of Industry Experience",
             icon: "⭐",
             gradient: "from-orange-500 to-red-500",
         },
