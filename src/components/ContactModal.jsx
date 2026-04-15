@@ -162,7 +162,7 @@ export default function ContactModal({ isOpen, onClose }) {
                                             className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-primary-800 border-2 border-transparent focus:border-primary-500 outline-none transition-all dark:text-white appearance-none cursor-pointer"
                                         >
                                             <option>Recovery Banking</option>
-                                            <option>Dubai Banking</option>
+                                            <option>International Banking</option>
                                             <option>Stressed Asset Management</option>
                                             <option>Real Estate Services</option>
                                             <option>Training & Placement</option>

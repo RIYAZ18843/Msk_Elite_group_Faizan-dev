@@ -1,155 +1,145 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import {
-    HiChatAlt2,
+    HiArrowRight,
+    HiSparkles,
     HiUserGroup,
-    HiCurrencyDollar,
     HiChip,
-    HiCog,
+    HiClock,
 } from 'react-icons/hi';
 
-export default function Services({ onContactClick }) {
+export default function About() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: '-100px' });
 
-    const services = [
-        {
-            icon: HiCurrencyDollar,
-            title: 'Retail & MSME Recoveries',
-            description:
-                'End-to-end recovery solutions for retail portfolios and MSME loans, ensuring maximum return while maintaining compliance.',
-            color: 'from-primary-500 to-primary-700',
-            shadowColor: 'group-hover:shadow-primary-500/50',
-        },
+    const reasons = [
         {
             icon: HiUserGroup,
-            title: 'Corporate Loan Recovery',
-            description:
-                'Expert management of corporate delinquency and NPA accounts through strategic intervention and legal support.',
-            color: 'from-accent-500 to-accent-700',
-            shadowColor: 'group-hover:shadow-accent-500/50',
+            number: '7+',
+            title: 'More than 7 customers have experienced.',
+            gradient: 'from-blue-500 to-cyan-500',
+            description: 'development'
         },
         {
             icon: HiChip,
-            title: 'Advanced Asset Tracing',
-            description:
-                'Utilizing technology-driven tracing tools and field intelligence to identify and locate physical assets globally.',
-            color: 'from-primary-600 to-primary-800',
-            shadowColor: 'group-hover:shadow-primary-600/50',
+            number: '8+',
+            title: 'More than 8,000 customer project',
+            gradient: 'from-purple-500 to-pink-500',
+            description: 'development'
         },
         {
-            icon: HiChatAlt2,
-            title: 'Legal Process Support',
-            description:
-                'Full support for SARFAESI Act procedures, bank policies, and statutory laws to expedite recovery lifecycles.',
-            color: 'from-accent-600 to-accent-800',
-            shadowColor: 'group-hover:shadow-accent-600/50',
-        },
-        {
-            icon: HiCog,
-            title: 'Stressed Asset Management',
-            description:
-                'Comprehensive management of delinquent assets, focusing on financial restructuring and results-oriented recoveries.',
-            color: 'from-primary-700 to-primary-900',
-            shadowColor: 'group-hover:shadow-primary-700/50',
-        },
+            icon: HiClock,
+            number: '5+',
+            title: 'More than 5+ years of experience.',
+            gradient: 'from-orange-500 to-red-500',
+            description: 'development'
+        }
     ];
 
     return (
         <section
-            id="services"
+            id="about"
             ref={ref}
-            className="py-24 bg-gradient-to-b from-white to-gray-50 dark:from-primary-950 dark:to-primary-900 transition-colors duration-500"
+            className="py-24 bg-gradient-to-b from-white to-gray-50 dark:from-primary-950 dark:to-primary-900 transition-colors duration-500 overflow-hidden"
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Section Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
+                    className="text-center mb-12"
                 >
-                    <h2 className="text-4xl sm:text-5xl font-bold text-primary-900 mb-4">
-                        <span className="text-gradient dark:from-primary-400 dark:to-accent-400">
-                            Our Banking Services
+                    <div className="inline-flex items-center space-x-2 px-4 py-2 bg-primary-100 dark:bg-primary-800/50 rounded-full mb-6">
+                        <HiSparkles className="text-primary-600 w-5 h-5" />
+                        <span className="text-sm font-semibold text-primary-600 dark:text-primary-300">
+                            ABOUT US
                         </span>
-                    </h2>
-                    <p className="text-xl text-gray-600 dark:text-primary-200 max-w-2xl mx-auto">
-                        Result-oriented recovery and asset management solutions designed to secure 
-                        financial stability and maximize institutional results.
-                    </p>
+                    </div>
                 </motion.div>
 
-                {/* Services Grid */}
-                <div className="flex flex-wrap justify-center gap-8 lg:gap-10">
-                    {services.map((service, index) => (
+                {/* Main Content */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                    {/* Left Side - Image Placeholder */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.8 }}
+                        className="relative"
+                    >
+                        <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                            <img
+                                src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?w=600&h=500&fit=crop"
+                                alt="Digital Innovation"
+                                className="w-full h-auto object-cover rounded-3xl"
+                                style={{ minHeight: '400px', maxHeight: '500px', objectFit: 'cover' }}
+                            />
+                            {/* Gradient Overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-primary-900/30 to-transparent" />
+                        </div>
+                        
+                        {/* Floating Badge */}
                         <motion.div
-                            key={service.title}
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
-                            whileHover={{ y: -10, scale: 1.02 }}
-                            className="group relative glass-card rounded-3xl p-8 sm:p-10 transition-all duration-300 overflow-hidden w-full md:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.75rem)] max-w-md flex flex-col items-center text-center shadow-xl hover:shadow-primary-500/10"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                            transition={{ delay: 0.4, duration: 0.5 }}
+                            className="absolute -bottom-6 -right-6 bg-white dark:bg-primary-800 rounded-2xl shadow-2xl p-4 backdrop-blur-sm hidden lg:block"
                         >
-                            {/* Gradient Border Effect */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-primary-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                            {/* Icon Container */}
-                            <div
-                                className={`relative inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br ${service.color} mb-8 shadow-lg ${service.shadowColor} group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}
-                            >
-                                <service.icon className="w-10 h-10 text-white relative z-10" />
-                                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 rounded-2xl transition-opacity" />
+                            <div className="flex items-center space-x-3">
+                                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center">
+                                    <span className="text-white font-bold text-xl">⭐</span>
+                                </div>
+                                <div>
+                                    <div className="text-sm font-bold text-gray-900 dark:text-white">Trusted Partner</div>
+                                    <div className="text-xs text-gray-600 dark:text-primary-300">Since 2018</div>
+                                </div>
                             </div>
-
-                            {/* Content */}
-                            <h3 className="relative z-10 text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-primary-600 dark:group-hover:text-accent-400 transition-colors">
-                                {service.title}
-                            </h3>
-                            <p className="relative z-10 text-gray-600 dark:text-primary-200 leading-relaxed mb-8 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
-                                {service.description}
-                            </p>
-
-                            {/* Learn More Link */}
-                            <button className="relative z-10 inline-flex items-center space-x-2 text-primary-600 dark:text-accent-400 font-bold group-hover:text-accent-500 dark:group-hover:text-white transition-colors tracking-wide uppercase text-sm mt-auto py-2 px-4 rounded-lg bg-primary-50 dark:bg-primary-900/50 group-hover:bg-accent-50 dark:group-hover:bg-accent-950/50 transition-all">
-                                <span>Learn More</span>
-                                <motion.span
-                                    animate={{ x: [0, 5, 0] }}
-                                    transition={{ duration: 1.5, repeat: Infinity }}
-                                >
-                                    →
-                                </motion.span>
-                            </button>
-
-                            {/* Decorative Background Blob */}
-                            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-br from-primary-600/10 to-transparent rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
                         </motion.div>
-                    ))}
-                </div>
+                    </motion.div>
 
-                {/* CTA Section */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.8 }}
-                    className="mt-16 text-center"
-                >
-                    <div className="inline-block bg-gradient-to-r from-primary-600 to-accent-500 rounded-2xl p-8 sm:p-12 shadow-2xl">
-                        <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-                            Ready to Secure Your Assets?
-                        </h3>
-                        <p className="text-white/90 mb-6 max-w-2xl mx-auto">
-                            Join dozens of financial institutions that have optimized their
-                            recovery cycles with our expert strategic solutions.
+                    {/* Right Side - Content */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                    >
+                        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-900 dark:text-white mb-4">
+                            Driving Digital Innovation <br />
+                            with <span className="text-gradient">Passion & Precision</span>
+                        </h2>
+
+                        <p className="text-lg text-gray-600 dark:text-primary-200 leading-relaxed mb-6">
+                            At Chartfield Services, we're more than just a software company - we're 
+                            your trusted technology partner in an ever-evolving digital world. With a 
+                            strong foundation in innovation, quality, and customer satisfaction, we deliver 
+                            next-gen solutions that empower businesses to thrive.
                         </p>
+
+                        <p className="text-lg text-gray-600 dark:text-primary-200 leading-relaxed mb-8">
+                            From cutting-edge website development and enterprise-grade software 
+                            solutions to UI/UX design, cybersecurity, data analytics, and digital marketing, 
+                            we cover every aspect of the digital transformation journey.
+                        </p>
+
+                        {/* Know More Button */}
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            onClick={onContactClick}
-                            className="px-8 py-4 bg-white text-primary-600 rounded-xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300"
+                            className="group px-8 py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
                         >
-                            Connect with an Expert
+                            <span>Know more</span>
+                            <HiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </motion.button>
-                    </div>
+                    </motion.div>
+                </div>
+
+                {/* Why Choose Us Section */}
+                <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                    className="mt-24"
+                >
                 </motion.div>
             </div>
         </section>

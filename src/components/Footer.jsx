@@ -4,8 +4,6 @@ import {
     FaFacebookF,
     FaInstagram,
     FaLinkedinIn,
-    FaTwitter,
-    FaWhatsapp,
 } from 'react-icons/fa';
 import { HiMail, HiPhone, HiLocationMarker } from 'react-icons/hi';
 
@@ -14,94 +12,74 @@ export default function Footer({ onContactClick }) {
 
     const quickLinks = [
         { name: 'Home', href: '/' },
-        { name: 'Recovery Banking', href: '/recovery-banking' },
-        { name: 'Dubai Banking', href: '/dubai-banking' },
+        { name: 'Banking', href: '/banking' },
+        { name: 'International Banking', href: '/international-banking' },
         { name: 'Training & Placement', href: '/training' },
         { name: 'Real Estate', href: '/real-estate' },
     ];
 
     const services = [
-        'Retail & MSME Recoveries',
-        'Corporate Loan Recovery',
-        'Stressed Asset Management',
-        'Physical Asset Tracing',
-        'Sovereign Debt Dubai',
+        'Digital Marketing',
+        'Software Testing',
+        'UI/UX Design',
+        'Project Management',
+        'Full Stack Developer',
     ];
 
     const socialLinks = [
         {
             name: 'Facebook',
             icon: FaFacebookF,
-            href: 'https://www.facebook.com/people/charts-field-services/61578501100902/?rdid=IfV5Xe8wi14KL8xZ&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1CWRYXpNDH%2F',
-            color: 'hover:bg-blue-600',
+            href: 'https://www.facebook.com/people/charts-field-services/61578501100902/',
         },
         {
             name: 'Instagram',
             icon: FaInstagram,
-            href: 'https://www.instagram.com/chartsfieldservices?igsh=MTA1d2tjbThucGJrcA%3D%3D',
-            color: 'hover:bg-pink-600',
+            href: 'https://www.instagram.com/chartsfieldservices',
         },
         {
             name: 'LinkedIn',
             icon: FaLinkedinIn,
             href: 'https://www.linkedin.com/in/chartsfield-services-ab25283b8/',
-            color: 'hover:bg-blue-700',
-        },
-        {
-            name: 'Twitter',
-            icon: FaTwitter,
-            href: 'https://x.com/charts_field',
-            color: 'hover:bg-blue-400',
         },
     ];
 
-    const scrollToSection = (href) => {
-        const element = document.querySelector(href);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
-
     return (
         <footer className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                    
                     {/* Company Info */}
                     <div>
-                        <div className="flex items-center space-x-4 mb-6">
+                        <div className="flex items-center space-x-3 mb-4">
                             <img
-                                src="logo.png"
+                                src="/image.png"
                                 alt="Chartfield Services"
-                                className="w-32 h-32 object-contain mix-blend-multiply flex-shrink-0"
-                                style={{ isolation: 'isolate' }}
+                                className="w-12 h-12 object-contain"
+                                onError={(e) => { e.target.style.display = 'none' }}
                             />
                             <div>
-                                <h3 className="text-xl font-bold">
-                                    Chartfield Services
-                                </h3>
-                                <p className="text-sm text-primary-200">
-                                    Banking & Recovery
-                                </p>
+                                <h3 className="text-lg font-bold">Chartfield Services</h3>
+                                <p className="text-xs text-primary-200">Banking</p>
                             </div>
                         </div>
-                        <p className="text-primary-200 mb-6 leading-relaxed">
-                            Chartfield Services is a comprehensive banking and financial recovery services organization
-                            dedicated to managing stressed, delinquent, and non-performing assets for Banks and Financial Institutions.
+                        <p className="text-primary-200 text-sm leading-relaxed mb-4">
+                            Chartfield Services is a comprehensive banking and financial recovery services organization dedicated to managing stressed, delinquent, and non-performing assets for Banks and Financial Institutions.
                         </p>
                         {/* Social Links */}
-                        <div className="flex space-x-3">
+                        <div className="flex space-x-2">
                             {socialLinks.map((social) => (
                                 <motion.a
                                     key={social.name}
                                     href={social.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    whileHover={{ scale: 1.1, y: -3 }}
+                                    whileHover={{ scale: 1.1, y: -2 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className={`w-10 h-10 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center ${social.color} transition-all duration-300 shadow-lg border border-white/10`}
+                                    className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent-500 transition-all duration-300"
                                     aria-label={social.name}
                                 >
-                                    <social.icon className="w-5 h-5" />
+                                    <social.icon className="w-4 h-4" />
                                 </motion.a>
                             ))}
                         </div>
@@ -109,15 +87,14 @@ export default function Footer({ onContactClick }) {
 
                     {/* Quick Links */}
                     <div>
-                        <h4 className="text-lg font-bold mb-6">Quick Links</h4>
-                        <ul className="space-y-3">
+                        <h4 className="text-md font-bold mb-4">Quick Links</h4>
+                        <ul className="space-y-2">
                             {quickLinks.map((link) => (
                                 <li key={link.name}>
                                     <Link
                                         to={link.href}
-                                        className="text-primary-200 hover:text-accent-400 transition-colors duration-200 flex items-center group"
+                                        className="text-primary-200 hover:text-accent-400 text-sm transition-colors duration-200"
                                     >
-                                        <span className="w-0 h-0.5 bg-accent-400 group-hover:w-4 transition-all duration-300 mr-0 group-hover:mr-2"></span>
                                         {link.name}
                                     </Link>
                                 </li>
@@ -125,16 +102,14 @@ export default function Footer({ onContactClick }) {
                         </ul>
                     </div>
 
-                    {/* Services */}
+                    {/* Our Services */}
                     <div>
-                        <h4 className="text-lg font-bold mb-6">
-                            Our Services
-                        </h4>
-                        <ul className="space-y-3">
+                        <h4 className="text-md font-bold mb-4">Our Services</h4>
+                        <ul className="space-y-2">
                             {services.map((service) => (
                                 <li
                                     key={service}
-                                    className="text-primary-200 hover:text-accent-400 transition-colors duration-200 cursor-pointer"
+                                    className="text-primary-200 hover:text-accent-400 text-sm transition-colors duration-200 cursor-pointer"
                                 >
                                     {service}
                                 </li>
@@ -144,28 +119,28 @@ export default function Footer({ onContactClick }) {
 
                     {/* Contact Info */}
                     <div>
-                        <h4 className="text-lg font-bold mb-6">Contact Us</h4>
-                        <ul className="space-y-4">
-                            <li className="flex items-start space-x-3">
-                                <HiLocationMarker className="w-5 h-5 text-accent-400 mt-1 flex-shrink-0" />
-                                <span className="text-primary-200 leading-relaxed">
+                        <h4 className="text-md font-bold mb-4">Contact Us</h4>
+                        <ul className="space-y-3">
+                            <li className="flex items-start space-x-2">
+                                <HiLocationMarker className="w-4 h-4 text-accent-400 mt-0.5 flex-shrink-0" />
+                                <span className="text-primary-200 text-sm leading-relaxed">
                                     13-6-437/2/A/4/A Flat 202, Second Floor, Guddimalkapur, Hyderabad - 28
                                 </span>
                             </li>
-                            <li className="flex items-start space-x-3">
-                                <HiPhone className="w-5 h-5 text-accent-400 mt-1 flex-shrink-0" />
+                            <li className="flex items-center space-x-2">
+                                <HiPhone className="w-4 h-4 text-accent-400 flex-shrink-0" />
                                 <a
-                                    href="tel:+918331979865"
-                                    className="text-primary-200 hover:text-accent-400 transition-colors"
+                                    href="tel:+919640202170"
+                                    className="text-primary-200 hover:text-accent-400 text-sm transition-colors"
                                 >
                                     +91 96402 02170
                                 </a>
                             </li>
-                            <li className="flex items-start space-x-3">
-                                <HiMail className="w-5 h-5 text-accent-400 mt-1 flex-shrink-0" />
+                            <li className="flex items-center space-x-2">
+                                <HiMail className="w-4 h-4 text-accent-400 flex-shrink-0" />
                                 <a
                                     href="mailto:hr@chartfieldservices.com"
-                                    className="text-primary-200 hover:text-accent-400 transition-colors"
+                                    className="text-primary-200 hover:text-accent-400 text-sm transition-colors"
                                 >
                                     hr@chartfieldservices.com
                                 </a>
@@ -175,12 +150,12 @@ export default function Footer({ onContactClick }) {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="border-t border-primary-700 pt-8">
-                    <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                        <p className="text-primary-300 text-sm text-center md:text-left">
+                <div className="border-t border-primary-700 pt-6 mt-4">
+                    <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0">
+                        <p className="text-primary-300 text-xs text-center sm:text-left">
                             © {currentYear} Chartfield Services. All rights reserved.
                         </p>
-                        <div className="flex space-x-6 text-sm">
+                        <div className="flex space-x-4 text-xs">
                             <a
                                 href="#"
                                 className="text-primary-300 hover:text-accent-400 transition-colors"

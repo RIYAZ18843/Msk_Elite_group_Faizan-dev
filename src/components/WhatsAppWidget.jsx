@@ -8,7 +8,7 @@ export default function WhatsAppWidget() {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 1, type: 'spring', stiffness: 260, damping: 20 }}
-            href="https://wa.me/919640202170?text=Hello%20Chartfield%20Services%2C%20I%20am%20interested%20in%20your%20professional%20banking%20and%20recovery%20solutions.%20Could%20you%20please%20provide%20more%20information%20on%20how%20you%20can%20assist%20me%3F"
+            href="https://wa.me/919640202170?text=Hello%20Chartfield%20Services%2C%20I%20am%20interested%20in%20your%20professional%20recovery%20banking%20solutions.%20Could%20you%20please%20provide%20more%20information%20on%20how%20you%20can%20assist%20me%3F"
             target="_blank"
             rel="noopener noreferrer"
             className="fixed bottom-6 right-6 z-50 group"

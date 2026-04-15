@@ -1,126 +1,227 @@
-import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import {
-    HiMail,
-    HiPhone,
-    HiLocationMarker,
-    HiClock,
-} from 'react-icons/hi';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { HiStar, HiChevronLeft, HiChevronRight, HiSparkles } from 'react-icons/hi';
 
-export default function Contact({ onContactClick }) {
+export default function Testimonials() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: '-100px' });
+    const [currentIndex, setCurrentIndex] = useState(0);
 
-    const contactInfo = [
+    const testimonials = [
         {
-            icon: HiPhone,
-            title: 'Phone',
-            details: '+91 833 1979 865',
-            color: 'from-primary-500 to-primary-700',
+            id: 1,
+            name: "Priya R.",
+            position: "Founder, TechBloom Solutions",
+            rating: 5,
+            text: "Working with Chartfield Services was a game-changer for our business. Their team not only understood our vision but exceeded our expectations with a modern, scalable website. Their communication and support throughout the project were outstanding.",
+            image: "https://randomuser.me/api/portraits/women/1.jpg",
+            initial: "PR"
         },
         {
-            icon: HiMail,
-            title: 'Email',
-            details: 'admin@chartfieldservices.com',
-            color: 'from-accent-500 to-accent-700',
+            id: 2,
+            name: "Amit K.",
+            position: "Product Manager, NexGen Enterprises",
+            rating: 5,
+            text: "From UI/UX design to software development and testing, Chartfield Servicesdelivered top-tier results. Their agile approach, timely delivery, and attention to detail made a big difference. Highly recommended for any business going digital.",
+            image: "https://randomuser.me/api/portraits/men/2.jpg",
+            initial: "AK"
         },
         {
-            icon: HiLocationMarker,
-            title: 'Location',
-            details: '13-6-437/2/A/4/A Flat 202, Second Floor, Guddimalkapur, Hyderabad - 28',
-            color: 'from-primary-600 to-primary-800',
-        },
-        {
-            icon: HiClock,
-            title: 'Business Hours',
-            details: 'Mon - Sat: 9:00 AM - 6:00 PM',
-            color: 'from-accent-600 to-accent-800',
-        },
+            id: 3,
+            name: "Divya S.",
+            position: "COO, Meditech Health Systems",
+            rating: 5,
+            text: "Chartfield Services helped us with our digital transformation—seamlessly! Their big data analytics and cybersecurity services added tremendous value to our operations. We're glad we chose them as our long-term technology partner.",
+            image: "https://randomuser.me/api/portraits/women/3.jpg",
+            initial: "DS"
+        }
     ];
+
+    // Auto-slide every 5 seconds
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, [testimonials.length]);
+
+    const goToPrevious = () => {
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
+    };
+
+    const goToNext = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+    };
+
+    const goToSlide = (index) => {
+        setCurrentIndex(index);
+    };
 
     return (
         <section
-            id="contact"
+            id="testimonials"
             ref={ref}
-            className="py-24 bg-gradient-to-b from-white to-primary-50 dark:from-primary-950 dark:to-primary-900 transition-colors duration-500"
+            className="pt-8 pb-24 bg-gradient-to-b from-gray-50 to-white dark:from-primary-900 dark:to-primary-950 transition-colors duration-500 overflow-hidden"
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl sm:text-5xl font-bold text-primary-900 dark:text-primary-50 mb-4">
-                        <span className="text-gradient">Get In Touch</span>
+                    <div className="inline-flex items-center space-x-2 px-4 py-2 bg-primary-100 dark:bg-primary-800/50 rounded-full mb-6">
+                        <HiSparkles className="text-primary-600 w-5 h-5" />
+                        <span className="text-sm font-semibold text-primary-600 dark:text-primary-300">
+                            TESTIMONIALS
+                        </span>
+                    </div>
+                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-900 dark:text-white mb-4">
+                        What our respectable <br />
+                        <span className="text-gradient">clients says</span>
                     </h2>
-                    <p className="text-xl text-gray-600 dark:text-primary-200 max-w-3xl mx-auto">
-                        Ready to secure your business stability? Contact us today to discuss your 
-                        banking and recovery needs and discover how our strategic solutions can help you.
-                    </p>
                 </motion.div>
 
-                {/* Contact Info Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-                    {contactInfo.map((info, index) => (
-                        <motion.div
-                            key={info.title}
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ delay: index * 0.1 }}
-                            whileHover={{ y: -5, scale: 1.05 }}
-                            className="glass-card rounded-2xl p-6 transition-all duration-300 text-center group border-t border-white/50"
-                        >
-                            <div
-                                className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br ${info.color} mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                {/* Testimonials Carousel */}
+                <div className="relative max-w-5xl mx-auto">
+                    {/* Main Card */}
+                    <div className="relative bg-white dark:bg-primary-800/50 rounded-3xl shadow-2xl overflow-hidden border border-gray-100 dark:border-primary-700/50">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={currentIndex}
+                                initial={{ opacity: 0, x: 100 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -100 }}
+                                transition={{ duration: 0.5, ease: "easeInOut" }}
+                                className="p-8 sm:p-12"
                             >
-                                <info.icon className="w-7 h-7 text-white" />
-                            </div>
-                            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
-                                {info.title}
-                            </h3>
-                            <p className="text-gray-600 dark:text-primary-200 group-hover:text-primary-600 dark:group-hover:text-accent-400 transition-colors">{info.details}</p>
-                        </motion.div>
-                    ))}
+                                {/* Quote Icon */}
+                                <div className="absolute top-8 right-8 text-8xl text-primary-100 dark:text-primary-700/30 font-serif">
+                                    "
+                                </div>
+
+                                {/* Rating Stars */}
+                                <div className="flex items-center space-x-1 mb-6">
+                                    {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
+                                        <HiStar key={i} className="w-6 h-6 text-yellow-400 fill-current" />
+                                    ))}
+                                </div>
+
+                                {/* Testimonial Text */}
+                                <p className="text-xl sm:text-2xl text-gray-700 dark:text-primary-200 leading-relaxed mb-8 relative z-10">
+                                    "{testimonials[currentIndex].text}"
+                                </p>
+
+                                {/* Client Info */}
+                                <div className="flex items-center space-x-4">
+                                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center shadow-lg">
+                                        {testimonials[currentIndex].image ? (
+                                            <img 
+                                                src={testimonials[currentIndex].image} 
+                                                alt={testimonials[currentIndex].name}
+                                                className="w-full h-full rounded-full object-cover"
+                                            />
+                                        ) : (
+                                            <span className="text-xl font-bold text-white">
+                                                {testimonials[currentIndex].initial}
+                                            </span>
+                                        )}
+                                    </div>
+                                    <div>
+                                        <h4 className="text-xl font-bold text-primary-900 dark:text-white">
+                                            {testimonials[currentIndex].name}
+                                        </h4>
+                                        <p className="text-gray-600 dark:text-primary-300">
+                                            {testimonials[currentIndex].position}
+                                        </p>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </AnimatePresence>
+
+                        {/* Navigation Arrows */}
+                        <button
+                            onClick={goToPrevious}
+                            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white dark:bg-primary-800 rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+                        >
+                            <HiChevronLeft className="w-6 h-6 text-primary-600" />
+                        </button>
+                        <button
+                            onClick={goToNext}
+                            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white dark:bg-primary-800 rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+                        >
+                            <HiChevronRight className="w-6 h-6 text-primary-600" />
+                        </button>
+                    </div>
+
+                    {/* Dots Navigation */}
+                    <div className="flex justify-center gap-3 mt-8">
+                        {testimonials.map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => goToSlide(index)}
+                                className={`transition-all duration-300 rounded-full ${
+                                    currentIndex === index
+                                        ? 'w-8 h-2 bg-primary-600'
+                                        : 'w-2 h-2 bg-gray-400 hover:bg-primary-400'
+                                }`}
+                            />
+                        ))}
+                    </div>
+
+                    {/* Thumbnail Navigation */}
+                    <div className="flex justify-center gap-4 mt-8">
+                        {testimonials.map((testimonial, index) => (
+                            <motion.button
+                                key={testimonial.id}
+                                onClick={() => goToSlide(index)}
+                                whileHover={{ scale: 1.1 }}
+                                className={`relative transition-all duration-300 ${
+                                    currentIndex === index 
+                                        ? 'ring-4 ring-primary-500 scale-110' 
+                                        : 'opacity-60 hover:opacity-100'
+                                }`}
+                            >
+                                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center shadow-md overflow-hidden">
+                                    {testimonial.image ? (
+                                        <img 
+                                            src={testimonial.image} 
+                                            alt={testimonial.name}
+                                            className="w-full h-full rounded-full object-cover"
+                                        />
+                                    ) : (
+                                        <span className="text-sm font-bold text-white">
+                                            {testimonial.initial}
+                                        </span>
+                                    )}
+                                </div>
+                            </motion.button>
+                        ))}
+                    </div>
                 </div>
 
-                {/* CTA Card */}
+                {/* Stats/Trust Indicators */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ delay: 0.4 }}
-                    className="bg-gradient-to-br from-primary-900 via-primary-700 to-accent-600 rounded-3xl p-8 sm:p-12 shadow-2xl text-center relative overflow-hidden"
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    className="mt-20 text-center"
                 >
-                    {/* Decorative Elements */}
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent-500/20 rounded-full blur-3xl" />
-
-                    <div className="relative z-10">
-                        <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-                            Start Your Recovery Partnership Today
-                        </h3>
-                        <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-                            Connect with our experts to create a strategic asset management 
-                            plan that aligns with your financial objectives.
-                        </p>
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                onClick={onContactClick}
-                                className="px-8 py-4 bg-white text-primary-700 rounded-xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 inline-flex items-center space-x-2"
-                            >
-                                <span>Get Started Now</span>
-                            </motion.button>
-                            <motion.a
-                                href="mailto:admin@chartfieldservices.com"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-xl font-semibold text-lg hover:bg-white hover:text-primary-700 transition-all duration-300"
-                            >
-                                Send Email
-                            </motion.a>
+                    <div className="inline-flex flex-wrap items-center justify-center gap-8 p-6 bg-white dark:bg-primary-800/30 rounded-2xl shadow-lg">
+                        <div className="flex items-center space-x-2">
+                            <HiStar className="w-5 h-5 text-yellow-400 fill-current" />
+                            <span className="text-gray-700 dark:text-primary-200">4.9/5 Average Rating</span>
+                        </div>
+                        <div className="w-px h-8 bg-gray-300 dark:bg-primary-700" />
+                        <div className="flex items-center space-x-2">
+                            <span className="text-2xl font-bold text-primary-600">50+</span>
+                            <span className="text-gray-700 dark:text-primary-200">Happy Clients</span>
+                        </div>
+                        <div className="w-px h-8 bg-gray-300 dark:bg-primary-700" />
+                        <div className="flex items-center space-x-2">
+                            <span className="text-2xl font-bold text-primary-600">100+</span>
+                            <span className="text-gray-700 dark:text-primary-200">Projects Delivered</span>
                         </div>
                     </div>
                 </motion.div>

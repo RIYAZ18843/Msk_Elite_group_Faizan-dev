@@ -29,13 +29,13 @@ import {
 
 // --- SUB-COMPONENTS ---
 
-const DubaiHero = () => (
+const InternationalHero = () => (
     <section className="relative min-h-[85vh] flex items-center pt-24 overflow-hidden bg-primary-950">
         <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-r from-primary-950/90 via-primary-950/70 to-transparent z-10" />
             <img 
                 src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=60&w=1200" 
-                alt="Dubai Skyline" 
+                alt="International Skyline" 
                 className="w-full h-full object-cover opacity-40 scale-110"
             />
         </div>
@@ -54,11 +54,11 @@ const DubaiHero = () => (
                     </span>
                 </div>
                 <h1 className="text-6xl sm:text-8xl font-bold mb-8 leading-tight tracking-tight">
-                    <span className="text-white text-gradient">Global Banking.</span><br />
+                    <span className="text-white text-gradient">International Banking.</span><br />
                     <span className="text-white">Local Excellence.</span>
                 </h1>
                 <p className="text-xl text-primary-200 mb-12 max-w-2xl leading-relaxed">
-                    Direct Selling Agent for leading UAE banks. Dedicated to ethical sales, regulatory compliance, and high-quality customer acquisition in Dubai.
+                    Direct Selling Agent for leading banks. Dedicated to ethical sales, regulatory compliance, and high-quality customer acquisition globally.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center gap-6">
                     <motion.button
@@ -359,7 +359,7 @@ const CodeOfConduct = () => (
 const PartnerWithUs = () => (
     <section className="py-32 bg-white dark:bg-primary-950">
         <div className="max-w-5xl mx-auto px-4 text-center">
-            <h2 className="text-5xl sm:text-7xl font-bold text-primary-900 dark:text-white mb-8 tracking-tight">Partner With Us in Dubai</h2>
+            <h2 className="text-5xl sm:text-7xl font-bold text-primary-900 dark:text-white mb-8 tracking-tight">Partner With Us Internationally</h2>
             <p className="text-xl text-gray-600 dark:text-primary-200 mb-12 max-w-2xl mx-auto leading-relaxed">
                 Commission payable only on disbursed/activated cases. Grow your business with transparent, quality-linked incentives.
             </p>
@@ -377,14 +377,14 @@ const PartnerWithUs = () => (
 
 // --- MAIN PAGE COMPONENT ---
 
-export default function DubaiBanking() {
+export default function InternationalBanking() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
     return (
         <div className="bg-white dark:bg-primary-950 transition-colors duration-500">
-            <DubaiHero />
+            <InternationalHero />
             <ServiceScope />
             <KeyResponsibilities />
             <SLAFramework />

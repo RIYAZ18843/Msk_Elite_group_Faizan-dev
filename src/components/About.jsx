@@ -1,39 +1,88 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import {
-    HiCheckCircle,
-    HiLightBulb,
     HiTrendingUp,
-    HiUserGroup,
-    HiPhone,
+    HiBeaker,
+    HiPencilAlt,
+    HiClipboardList,
+    HiDatabase,
+    HiCode,
+    HiCog,
+    HiCloud,
+    HiShieldCheck,
+    HiArrowRight,
+    HiSparkles,
 } from 'react-icons/hi';
-import { FaLinkedinIn } from 'react-icons/fa';
 
 export default function About() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: '-100px' });
 
-    const values = [
+    const services = [
         {
-            icon: HiLightBulb,
-            title: 'Compliance',
-            description: 'Strict adherence to RBI & statutory guidelines',
+            id: '01',
+            title: 'Full Stack Developer',
+            icon: HiCode,
+            gradient: 'from-red-500 to-orange-500',
+            description: 'Our expert full-stack developers build end-to-end web applications using modern technologies like React, Node.js, Python, and MongoDB. We deliver scalable, responsive, and high-performance solutions tailored to your business needs.',
+            features: ['React', 'Node.js', 'Python', 'MongoDB', 'API Development']
         },
         {
-            icon: HiCheckCircle,
-            title: 'Transparency',
-            description: 'Result-oriented approach with full reporting',
+            id: '02',
+            title: 'DevOps Engineer',
+            icon: HiCog,
+            gradient: 'from-teal-500 to-green-500',
+            description: 'Streamline your development and operations with our DevOps engineering services. We implement CI/CD pipelines, cloud infrastructure, containerization, and automation to accelerate delivery and improve reliability.',
+            features: ['CI/CD', 'Docker', 'Kubernetes', 'AWS/Azure', 'Infrastructure as Code']
         },
         {
+            id: '03',
+            title: 'Digital Marketing',
             icon: HiTrendingUp,
-            title: 'Result Driven',
-            description: 'Maximizing recoveries through strategic cycles',
+            gradient: 'from-blue-500 to-cyan-500',
+            description: 'Our digital marketing team boosts your online presence with data-driven strategies that attract, engage, and convert. From SEO to paid campaigns, we craft personalized solutions.',
+            features: ['SEO', 'Paid Campaigns', 'Social Media', 'Content Strategy']
         },
         {
-            icon: HiUserGroup,
-            title: 'Trust',
-            description: 'Partnering with premium Banks & ARCs',
+            id: '04',
+            title: 'UI/UX Design',
+            icon: HiPencilAlt,
+            gradient: 'from-orange-500 to-red-500',
+            description: 'We craft intuitive and visually compelling user interfaces that drive interaction and improve user satisfaction. From wireframes to prototypes, our UI/UX experts ensure seamless digital experiences that reflect your brand identity and boost usability.',
+            features: ['Wireframing', 'Prototyping', 'User Research', 'Usability']
         },
+        {
+            id: '05',
+            title: 'Project Management',
+            icon: HiClipboardList,
+            gradient: 'from-green-500 to-emerald-500',
+            description: 'Scubel Soft Services provides expert project management to ensure your tech projects are delivered on time, within scope, and on budget. Our certified project managers follow agile, scrum, and waterfall methodologies tailored to your needs.',
+            features: ['Agile', 'Scrum', 'Waterfall', 'Risk Management']
+        },
+        {
+            id: '06',
+            title: 'Software Testing',
+            icon: HiBeaker,
+            gradient: 'from-purple-500 to-pink-500',
+            description: 'Our rigorous testing services ensure your software performs flawlessly across all platforms. We specialize in manual and automated testing, identifying issues early, enhancing performance, and ensuring your product meets industry standards.',
+            features: ['Manual Testing', 'Automated Testing', 'Performance', 'Security']
+        },
+        {
+            id: '07',
+            title: 'Cloud Computing',
+            icon: HiCloud,
+            gradient: 'from-sky-500 to-blue-600',
+            description: 'Transform your infrastructure with our cloud computing services. We help you migrate, manage, and optimize cloud solutions across AWS, Azure, and Google Cloud for scalability, security, and cost efficiency.',
+            features: ['Cloud Migration', 'AWS', 'Azure', 'GCP', 'Cloud Security']
+        },
+        {
+            id: '08',
+            title: 'Cybersecurity',
+            icon: HiShieldCheck,
+            gradient: 'from-red-600 to-rose-600',
+            description: 'Protect your business from cyber threats with our comprehensive cybersecurity services. We offer vulnerability assessments, penetration testing, security audits, and 24/7 monitoring to keep your data safe.',
+            features: ['Penetration Testing', 'Security Audits', 'Threat Monitoring', 'Compliance']
+        }
     ];
 
     return (
@@ -43,188 +92,115 @@ export default function About() {
             className="py-24 bg-gradient-to-b from-gray-50 to-white dark:from-primary-900 dark:to-primary-950 transition-colors duration-500"
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    {/* Left Content */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <h2 className="text-4xl sm:text-5xl font-bold text-primary-900 dark:text-primary-50 mb-6">
-                            <span className="text-gradient">About Chartfield Services</span>
-                        </h2>
-                        <p className="text-lg text-gray-600 dark:text-primary-200 mb-6 leading-relaxed">
-                            Chartfield Services is a comprehensive banking and financial recovery services organization 
-                            dedicated to supporting Banks, NBFCs, HFCs, and Asset Reconstruction Companies (ARCs) 
-                            in managing stressed, delinquent, and non-performing assets.
-                        </p>
-                        <p className="text-lg text-gray-600 dark:text-primary-200 mb-8 leading-relaxed">
-                            We deliver end-to-end recovery lifecycle management, combining operational excellence, 
-                            legal process support, field intelligence, and technology-driven tracing tools to ensure 
-                            recoveries are maximized while fully adhering to statutory laws.
-                        </p>
-
-                        {/* Mission & Vision */}
-                        <div className="space-y-6">
-                            <div className="bg-gradient-to-r from-primary-50 to-accent-50 rounded-xl p-6 border-l-4 border-primary-600">
-                                <h3 className="text-xl font-bold text-primary-900 mb-2">
-                                    Our Mission
-                                </h3>
-                                <p className="text-gray-700">
-                                    To enable banks and financial institutions to recover bad loans efficiently, 
-                                    reduce the burden on civil courts, and maintain financial stability through ethical recovery.
-                                </p>
-                            </div>
-
-                            <div className="bg-gradient-to-r from-accent-50 to-primary-50 rounded-xl p-6 border-l-4 border-accent-600">
-                                <h3 className="text-xl font-bold text-primary-900 mb-2">
-                                    Our Vision
-                                </h3>
-                                <p className="text-gray-700">
-                                    To be the most trusted and customer-centric recovery firm, recognized for innovation, 
-                                    transparency, and transformative impact in the banking sector.
-                                </p>
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    {/* Right Content - Values Grid */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="grid grid-cols-2 gap-6"
-                    >
-                        {values.map((value, index) => (
-                            <motion.div
-                                key={value.title}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                                transition={{ delay: 0.4 + index * 0.1 }}
-                                whileHover={{ scale: 1.05 }}
-                                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
-                            >
-                                <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-primary-600 to-accent-500 mb-4 shadow-lg">
-                                    <value.icon className="w-7 h-7 text-white" />
-                                </div>
-                                <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">
-                                    {value.title}
-                                </h4>
-                                <p className="text-sm text-gray-600 dark:text-primary-200">{value.description}</p>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                </div>
-
-                {/* Leadership Section */}
+                {/* Section Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 50 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className="mt-20 mb-20"
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-16"
                 >
-                    <h3 className="text-3xl font-bold text-center text-primary-900 mb-12">
-                        <span className="text-gradient">Our Leadership</span>
-                    </h3>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {[
-                            {
-                                name: "Suraj Badge",
-                                title: "Co-founder",
-                                initials: "SB",
-                                phone: "+91 916 0000 608",
-                                gradient: "from-accent-400 to-accent-600"
-                            },
-                            {
-                                name: "Ambica Jadav",
-                                title: "Co-Founder",
-                                initials: "AJ",
-                                phone: "",
-                                gradient: "from-primary-600 to-primary-800"
-                            },
-                            {
-                                name: "Syed Mohiuddin Shareef",
-                                title: "Director and Operations Head",
-                                initials: "SS",
-                                phone: "+91 833 1979 865",
-                                gradient: "from-blue-500 to-blue-700"
-                            }
-                        ].map((leader, idx) => (
-                            <motion.div
-                                key={leader.name}
-                                whileHover={{ y: -10 }}
-                                className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 rounded-3xl p-8 shadow-2xl overflow-hidden relative group text-center"
-                            >
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl" />
-                                <div className="relative z-10">
-                                    <div className={`w-24 h-24 mx-auto bg-gradient-to-br ${leader.gradient} rounded-full flex items-center justify-center shadow-glow border-4 border-white/10 mb-6`}>
-                                        <span className="text-3xl font-bold text-white tracking-tighter">{leader.initials}</span>
-                                    </div>
-                                    <h4 className="text-xl font-bold text-white mb-2 group-hover:text-accent-400 transition-colors">
-                                        {leader.name}
-                                    </h4>
-                                    <p className="text-primary-300 font-semibold text-sm uppercase tracking-widest mb-4">
-                                        {leader.title}
-                                    </p>
-                                    {leader.phone && (
-                                        <a href={`tel:${leader.phone.replace(/\s/g, '')}`} className="text-white/70 text-sm hover:text-white transition-colors flex items-center justify-center gap-2">
-                                            <HiPhone className="w-4 h-4" />
-                                            {leader.phone}
-                                        </a>
-                                    )}
-                                </div>
-                            </motion.div>
-                        ))}
+                    <div className="inline-flex items-center space-x-2 px-4 py-2 bg-primary-100 dark:bg-primary-800/50 rounded-full mb-6">
+                        <HiSparkles className="text-primary-600 w-5 h-5" />
+                        <span className="text-sm font-semibold text-primary-600 dark:text-primary-300">
+                            OUR SERVICE
+                        </span>
                     </div>
+                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-900 dark:text-white mb-4">
+                        Experience our latest services
+                    </h2>
+                    <p className="text-xl text-gray-600 dark:text-primary-200 max-w-3xl mx-auto">
+                        Comprehensive solutions tailored to drive your business success
+                    </p>
                 </motion.div>
 
-                {/* Why Choose Us */}
-                <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.8, delay: 0.6 }}
-                    className="mt-20"
-                >
-                    <h3 className="text-3xl font-bold text-center text-primary-900 mb-12">
-                        <span className="text-gradient">Why Choose Us?</span>
-                    </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {[
-                            {
-                                title: 'Banking Experts',
-                                description:
-                                    'Industry veterans with deep expertise in asset recovery and financial compliance.',
-                            },
-                            {
-                                title: 'Strategic Solutions',
-                                description:
-                                    'Tailored recovery frameworks designed to minimize losses and maximize efficiency.',
-                            },
-                            {
-                                title: 'Proven Results',
-                                description:
-                                    'High success rate in managing complex debt portfolios with ethical transparency.',
-                            },
-                        ].map((item, index) => (
-                            <motion.div
-                                key={item.title}
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                                transition={{ delay: 0.8 + index * 0.1 }}
-                                className="text-center"
-                            >
-                                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-primary-600 to-accent-500 mb-4 shadow-lg">
-                                    <span className="text-2xl font-bold text-white">
-                                        {index + 1}
-                                    </span>
+                {/* Services Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    {services.map((service, index) => (
+                        <motion.div
+                            key={service.id}
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={isInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ delay: index * 0.1, duration: 0.6 }}
+                            whileHover={{ y: -5 }}
+                            className="group relative bg-white dark:bg-primary-800/30 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 dark:border-primary-700/50"
+                        >
+                            {/* Gradient Background on Hover */}
+                            <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+                            
+                            <div className="relative p-8 lg:p-10">
+                                <div className="flex items-start justify-between mb-6">
+                                    <div className="flex items-center space-x-4">
+                                        {/* Icon */}
+                                        <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300`}>
+                                            <service.icon className="w-8 h-8 text-white" />
+                                        </div>
+                                        <h3 className="text-2xl font-bold text-primary-900 dark:text-white">
+                                            {service.title}
+                                        </h3>
+                                    </div>
+                                    {/* ID Badge */}
+                                    <div className="w-10 h-10 bg-gray-100 dark:bg-primary-700 rounded-full flex items-center justify-center shadow-md">
+                                        <span className="text-sm font-bold text-gray-700 dark:text-white">{service.id}</span>
+                                    </div>
                                 </div>
-                                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                                    {item.title}
-                                </h4>
-                                <p className="text-gray-600 dark:text-primary-200">{item.description}</p>
-                            </motion.div>
-                        ))}
+
+                                <p className="text-gray-600 dark:text-primary-200 leading-relaxed mb-6">
+                                    {service.description}
+                                </p>
+
+                                {/* Features Tags */}
+                                <div className="flex flex-wrap gap-2 mb-6">
+                                    {service.features.map((feature, idx) => (
+                                        <span
+                                            key={idx}
+                                            className="text-xs px-3 py-1 rounded-full bg-gray-100 dark:bg-primary-700/50 text-gray-700 dark:text-primary-200"
+                                        >
+                                            {feature}
+                                        </span>
+                                    ))}
+                                </div>
+
+                                {/* Learn More Button */}
+                                <motion.button
+                                    whileHover={{ x: 5 }}
+                                    className="group/btn inline-flex items-center space-x-2 text-primary-600 dark:text-primary-400 font-semibold hover:text-primary-700 dark:hover:text-primary-300 transition-colors"
+                                >
+                                    <span>Learn More</span>
+                                    <HiArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                                </motion.button>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+
+                {/* More Services Section */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                    className="mt-16 text-center"
+                >
+                    <div className="inline-block bg-gradient-to-r from-primary-500 to-accent-500 p-[2px] rounded-2xl shadow-xl">
+                        <div className="bg-white dark:bg-primary-900 rounded-2xl px-8 py-6">
+                            <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+                                <div className="text-left">
+                                    <h3 className="text-2xl font-bold text-primary-900 dark:text-white mb-2">
+                                        More Services Available
+                                    </h3>
+                                    <p className="text-gray-600 dark:text-primary-300">
+                                        We provide a wide range of services to meet your business needs
+                                    </p>
+                                </div>
+                                <motion.button
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="px-8 py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2 whitespace-nowrap"
+                                >
+                                    <span>learn more</span>
+                                    <HiArrowRight className="w-5 h-5" />
+                                </motion.button>
+                            </div>
+                        </div>
                     </div>
                 </motion.div>
             </div>

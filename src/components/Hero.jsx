@@ -1,14 +1,145 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { HiArrowRight, HiSparkles } from 'react-icons/hi';
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import {
+    HiArrowRight,
+    HiSparkles,
+    HiChevronLeft,
+    HiChevronRight,
+} from "react-icons/hi";
 
 export default function Hero({ onContactClick }) {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const statsRef = useRef(null);
+    const isStatsInView = useInView(statsRef, { once: true, margin: "-100px" });
+
+    // State for counting numbers
+    const [counts, setCounts] = useState({
+        count1: 0,
+        count2: 0,
+        count3: 0
+    });
+
+    const slides = [
+    {
+        imageUrl: "https://images.pexels.com/photos/270404/pexels-photo-270404.jpeg?w=800&h=500&fit=crop",
+        tagline: "Chartfield Services makes content fast & easy",
+        title: "Smart Web & Software Solutions for Modern Businesses",
+        description: "At Chartfield Services, we blend creativity, code, and cutting-edge tech to build dynamic websites and custom software that power your success.",
+        buttonText: "Get started",
+    },
+    {
+        imageUrl: "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?w=800&h=500&fit=crop",
+        tagline: "Chartfield Services makes content fast & easy",
+        title: "Web, Mobile & Enterprise Apps – All Under One Roof",
+        description: "From intuitive websites to powerful business applications, we create scalable solutions tailored to your industry needs. Tech that transforms—crafted by Chartfield Services.",
+        buttonText: "Get started",
+    },
+    {
+        imageUrl: "https://images.pexels.com/photos/6153354/pexels-photo-6153354.jpeg?w=800&h=500&fit=crop",
+        tagline: "Chartfield Services makes content fast & easy",
+        title: "AI-Powered Digital Transformation",
+        description: "Harness the power of artificial intelligence to transform your business with intelligent automation, predictive analytics, and smart decision-making capabilities that give you a competitive edge.",
+        buttonText: "Get started",
+    },
+    {
+        imageUrl: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?w=800&h=500&fit=crop",
+        tagline: "Chartfield Services makes content fast & easy",
+        title: "Intelligent Automation & Cloud Solutions",
+        description: "Leverage cutting-edge AI and cloud technologies to automate processes, reduce costs, and scale your operations seamlessly with our expert solutions.",
+        buttonText: "Get started",
+    },
+    {
+        imageUrl: "https://images.pexels.com/photos/5474295/pexels-photo-5474295.jpeg?w=800&h=500&fit=crop",
+        tagline: "Chartfield Services makes content fast & easy",
+        title: "Future-Ready Enterprise Solutions",
+        description: "Stay ahead of the competition with our future-ready enterprise solutions. From chatbots to predictive models, we build intelligent systems that evolve with your business.",
+        buttonText: "Get started",
+    },
+];
+
+    // Number counting animation
+    useEffect(() => {
+        if (isStatsInView) {
+            const targetNumbers = [7, 80, 5];
+            const duration = 2000; // 2 seconds
+            const stepTime = 20; // Update every 20ms
+
+            targetNumbers.forEach((target, index) => {
+                const steps = duration / stepTime;
+                const increment = target / steps;
+                let current = 0;
+
+                const counter = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(counter);
+                    }
+
+                    setCounts(prev => ({
+                        ...prev,
+                        [`count${index + 1}`]: Math.floor(current)
+                    }));
+                }, stepTime);
+
+                return () => clearInterval(counter);
+            });
+        }
+    }, [isStatsInView]);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, [slides.length]);
+
+    const goToPrevious = () => {
+        setCurrentIndex(
+            (prevIndex) => (prevIndex - 1 + slides.length) % slides.length,
+        );
+    };
+
+    const goToNext = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+    };
+
     const scrollToSection = (href) => {
         const element = document.querySelector(href);
         if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
+            element.scrollIntoView({ behavior: "smooth" });
         }
     };
+
+    const currentSlide = slides[currentIndex];
+
+    // Why Choose Us Data - Smaller & Compact
+    const whyChooseUsStats = [
+        {
+            number: "7+",
+            countKey: "count1",
+            actualNumber: 7,
+            label: "More than 7 customers have experienced.",
+            icon: "👥",
+            gradient: "from-blue-500 to-cyan-500",
+        },
+        {
+            number: "80+",
+            countKey: "count2",
+            actualNumber: 80,
+            label: "projects development",
+            icon: "📊",
+            gradient: "from-purple-500 to-pink-500",
+        },
+        {
+            number: "5+",
+            countKey: "count3",
+            actualNumber: 5,
+            label: "More than 5+ years of experience. development",
+            icon: "⭐",
+            gradient: "from-orange-500 to-red-500",
+        },
+    ];
 
     return (
         <section
@@ -25,7 +156,7 @@ export default function Hero({ onContactClick }) {
                     transition={{
                         duration: 20,
                         repeat: Infinity,
-                        ease: 'linear',
+                        ease: "linear",
                     }}
                     className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-primary-200/30 to-transparent rounded-full blur-3xl"
                 />
@@ -37,105 +168,253 @@ export default function Hero({ onContactClick }) {
                     transition={{
                         duration: 20,
                         repeat: Infinity,
-                        ease: 'linear',
+                        ease: "linear",
                     }}
                     className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-accent-200/30 to-transparent rounded-full blur-3xl"
                 />
             </div>
 
             {/* Content */}
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="inline-flex items-center space-x-2 px-4 py-2 bg-white/80 dark:bg-primary-900/40 backdrop-blur-sm rounded-full shadow-lg mb-8 border border-white/20 dark:border-primary-700/30"
-                >
-                    <HiSparkles className="text-accent-500 w-5 h-5 flex-shrink-0" />
-                    <span className="text-sm font-semibold text-primary-900 dark:text-primary-100">
-                        Strategic Asset Recovery
-                    </span>
-                </motion.div>
-
-                <motion.h1
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 tracking-tight"
-                >
-                    <span className="text-primary-900 dark:text-primary-50">Maximize Recoveries with</span>
-                    <br />
-                    <span className="text-gradient text-glow">Strategic Banking Solutions</span>
-                </motion.h1>
-
-                <motion.p
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-xl sm:text-2xl text-gray-600 dark:text-primary-200 mb-12 max-w-3xl mx-auto leading-relaxed"
-                >
-                    Empowering financial institutions through comprehensive stressed asset management, 
-                    field intelligence, and ethical recovery services. Your stability is our mission.
-                </motion.p>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.6 }}
-                    className="flex flex-col sm:flex-row items-center justify-center gap-4"
-                >
-                    <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => scrollToSection('#services')}
-                        className="group px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-xl font-semibold text-lg shadow-xl hover:shadow-glow transition-all duration-300 flex items-center space-x-2"
-                    >
-                        <span>Explore Our Services</span>
-                        <HiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </motion.button>
-
-                    <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={onContactClick}
-                        className="px-8 py-4 bg-white text-primary-600 rounded-xl font-semibold text-lg shadow-xl hover:shadow-lg transition-all duration-300 border-2 border-primary-200"
-                    >
-                        Contact Us
-                    </motion.button>
-                </motion.div>
-
-                {/* Stats */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.8 }}
-                    className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 max-w-5xl mx-auto"
-                >
-                    {[
-                        { number: '50+', label: 'Banks Supported' },
-                        { number: '500Cr+', label: 'Assets Managed' },
-                        { number: '15+', label: 'Years Experience' },
-                        { number: '96%', label: 'Recovery Rate' },
-                    ].map((stat, index) => (
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+                <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+                    {/* Left Side - Text Content */}
+                    <div className="flex-1 text-center lg:text-left">
                         <motion.div
-                            key={stat.label}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 1 + index * 0.1 }}
-                            whileHover={{ y: -5, scale: 1.02 }}
-                            className="glass-card rounded-2xl p-6 relative overflow-hidden group"
+                            key={`tagline-${currentIndex}`}
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -30 }}
+                            transition={{ duration: 0.5 }}
+                            className="inline-flex items-center space-x-2 px-3 py-1.5 bg-white/80 dark:bg-primary-900/40 backdrop-blur-sm rounded-full shadow-lg mb-5 border border-white/20 dark:border-primary-700/30"
                         >
-                            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary-100/50 to-transparent rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110" />
-                            <div className="relative z-10">
-                                <div className="text-3xl sm:text-4xl font-bold text-primary-600 bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-400 mb-2">
-                                    {stat.number}
-                                </div>
-                                <div className="text-sm text-gray-600 dark:text-primary-300 font-semibold tracking-wide">
-                                    {stat.label}
-                                </div>
-                            </div>
+                            <HiSparkles className="text-accent-500 w-4 h-4 flex-shrink-0" />
+                            <span className="text-xs font-semibold text-primary-900 dark:text-primary-100">
+                                {currentSlide.tagline}
+                            </span>
                         </motion.div>
-                    ))}
+
+                        <AnimatePresence mode="wait">
+                            <motion.h1
+                                key={`title-${currentIndex}`}
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -30 }}
+                                transition={{ duration: 0.5, delay: 0.1 }}
+                                className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 tracking-tight"
+                            >
+                                <span className="text-primary-900 dark:text-primary-50">
+                                    {currentSlide.title}
+                                </span>
+                            </motion.h1>
+                        </AnimatePresence>
+
+                        <AnimatePresence mode="wait">
+                            <motion.p
+                                key={`desc-${currentIndex}`}
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -30 }}
+                                transition={{ duration: 0.5, delay: 0.2 }}
+                                className="text-base sm:text-lg text-gray-600 dark:text-primary-200 mb-6 leading-relaxed"
+                            >
+                                {currentSlide.description}
+                            </motion.p>
+                        </AnimatePresence>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.3 }}
+                            className="flex flex-col sm:flex-row items-center lg:justify-start gap-3"
+                        >
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={() => scrollToSection("#services")}
+                                className="group px-6 py-2.5 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-lg font-semibold text-base shadow-xl hover:shadow-glow transition-all duration-300 flex items-center space-x-2"
+                            >
+                                <span>{currentSlide.buttonText}</span>
+                                <HiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            </motion.button>
+
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={onContactClick}
+                                className="px-6 py-2.5 bg-white text-primary-600 rounded-lg font-semibold text-base shadow-xl hover:shadow-lg transition-all duration-300 border-2 border-primary-200"
+                            >
+                                Contact Us
+                            </motion.button>
+                        </motion.div>
+                    </div>
+
+                    {/* Right Side - AI Generated Images Carousel */}
+                    <div className="flex-1 w-full max-w-md lg:max-w-lg mx-auto">
+                        <div className="relative group">
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={`image-${currentIndex}`}
+                                    initial={{ opacity: 0, scale: 0.9, rotateY: -90 }}
+                                    animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                                    exit={{ opacity: 0, scale: 0.9, rotateY: 90 }}
+                                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                                    className="relative rounded-xl overflow-hidden shadow-2xl"
+                                >
+                                    <img
+                                        src={currentSlide.imageUrl}
+                                        alt={currentSlide.title}
+                                        className="w-full h-auto object-cover rounded-xl"
+                                        style={{
+                                            minHeight: "280px",
+                                            maxHeight: "400px",
+                                            objectFit: "cover",
+                                        }}
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
+
+                                    {/* AI Badge */}
+                                    <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-sm rounded-full px-2 py-0.5">
+                                        <span className="text-xs text-white">✨ AI</span>
+                                    </div>
+                                </motion.div>
+                            </AnimatePresence>
+
+                            {/* Navigation Arrows */}
+                            <button
+                                onClick={goToPrevious}
+                                className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-1.5 shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100 focus:opacity-100"
+                            >
+                                <HiChevronLeft className="w-5 h-5 text-primary-600" />
+                            </button>
+                            <button
+                                onClick={goToNext}
+                                className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-1.5 shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100 focus:opacity-100"
+                            >
+                                <HiChevronRight className="w-5 h-5 text-primary-600" />
+                            </button>
+
+                            {/* Dots Navigation */}
+                            <div className="absolute -bottom-10 left-0 right-0 flex justify-center gap-1.5">
+                                {slides.map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => setCurrentIndex(index)}
+                                        className={`transition-all duration-300 rounded-full ${currentIndex === index
+                                                ? "w-6 h-1.5 bg-primary-600"
+                                                : "w-1.5 h-1.5 bg-gray-400 hover:bg-primary-400"
+                                            }`}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* WHY CHOOSE US Section - SMALL & COMPACT with Counting Animation */}
+                <motion.div
+                    ref={statsRef}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="mt-16"
+                >
+                    {/* Section Header - Smaller */}
+                    <div className="text-center mb-8">
+                        <div className="inline-flex items-center space-x-1.5 px-3 py-1 bg-primary-100 dark:bg-primary-800/50 rounded-full mb-3">
+                            <HiSparkles className="text-primary-600 w-3 h-3" />
+                            <span className="text-xs font-semibold text-primary-600 dark:text-primary-300">
+                                WHY CHOOSE US
+                            </span>
+                        </div>
+                        <h3 className="text-2xl sm:text-3xl font-bold text-primary-900 dark:text-white">
+                            Reason to choose our <br />
+                            <span className="text-gradient">platform</span>
+                        </h3>
+                    </div>
+
+                    {/* Stats Cards - 3 columns compact with counting numbers */}
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                        {whyChooseUsStats.map((stat, index) => (
+                            <motion.div
+                                key={stat.number}
+                                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                transition={{ delay: index * 0.1, duration: 0.4 }}
+                                whileHover={{ y: -4, scale: 1.02 }}
+                                className="rounded-xl p-4 relative overflow-hidden group bg-white dark:bg-primary-900/50 shadow-md text-center cursor-pointer border border-gray-100 dark:border-primary-700/30"
+                            >
+                                <div className="relative z-10">
+                                    {/* Icon with bounce animation */}
+                                    <motion.div
+                                        className="text-3xl mb-2"
+                                        animate={isStatsInView ? {
+                                            scale: [1, 1.2, 1],
+                                            rotate: [0, 10, -10, 0]
+                                        } : {}}
+                                        transition={{
+                                            duration: 0.6,
+                                            delay: index * 0.2,
+                                            type: "spring"
+                                        }}
+                                    >
+                                        {stat.icon}
+                                    </motion.div>
+
+                                    {/* Number with counting animation */}
+                                    <motion.div
+                                        className={`text-3xl font-bold bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent mb-1`}
+                                        initial={{ scale: 0 }}
+                                        animate={isStatsInView ? { scale: 1 } : {}}
+                                        transition={{
+                                            duration: 0.4,
+                                            delay: index * 0.1,
+                                            type: "spring"
+                                        }}
+                                    >
+                                        {isStatsInView ? (
+                                            <motion.span
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                transition={{ duration: 0.3 }}
+                                            >
+                                                {counts[stat.countKey]}+
+                                            </motion.span>
+                                        ) : (
+                                            "0+"
+                                        )}
+                                    </motion.div>
+
+                                    {/* Label with fade in */}
+                                    <motion.div
+                                        className="text-xs text-gray-600 dark:text-primary-300 font-medium leading-relaxed"
+                                        initial={{ opacity: 0 }}
+                                        animate={isStatsInView ? { opacity: 1 } : {}}
+                                        transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+                                    >
+                                        {stat.label}
+                                    </motion.div>
+                                </div>
+
+                                {/* Hover gradient effect */}
+                                <motion.div
+                                    className={`absolute inset-0 bg-gradient-to-r ${stat.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-xl`}
+                                />
+                            </motion.div>
+                        ))}
+                    </div>
+                </motion.div>
+
+                {/* AI Image Generation Prompts Info */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.8 }}
+                    className="text-center mt-8 text-xs text-gray-400"
+                >
+                    <p>
+                        ✨ AI Generated Visuals | Each image uniquely crafted for Chartfield
+                        Services's solutions
+                    </p>
                 </motion.div>
             </div>
 
@@ -143,13 +422,13 @@ export default function Hero({ onContactClick }) {
             <motion.div
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+                className="absolute bottom-6 left-1/2 transform -translate-x-1/2"
             >
-                <div className="w-6 h-10 border-2 border-primary-500 rounded-full flex items-start justify-center p-2">
+                <div className="w-5 h-8 border-2 border-primary-500 rounded-full flex items-start justify-center p-1.5">
                     <motion.div
-                        animate={{ y: [0, 12, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className="w-1.5 h-1.5 bg-primary-500 rounded-full"
+                        animate={{ y: [0, 10, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                        className="w-1 h-1 bg-primary-500 rounded-full"
                     />
                 </div>
             </motion.div>

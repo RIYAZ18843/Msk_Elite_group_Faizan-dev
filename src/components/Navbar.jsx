@@ -22,8 +22,8 @@ export default function Navbar({ onContactClick }) {
     const navLinks = [
         { name: 'Home', href: '/' },
         { name: 'Real Estate', href: '/real-estate' },
-        { name: 'Recovery Banking', href: '/recovery-banking' },
-        { name: 'Dubai Banking', href: '/dubai-banking' },
+        { name: 'Banking', href: '/recovery-banking' },
+        { name: 'International Banking', href: '/international-banking' },
         { name: 'Training & Placement', href: '/training' },
     ];
 
@@ -40,10 +40,11 @@ export default function Navbar({ onContactClick }) {
 
     return (
         <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-                    ? 'py-3 bg-white/80 dark:bg-primary-950/80 backdrop-blur-lg shadow-lg border-b border-primary-100/20'
-                    : 'py-5 bg-transparent'
-                }`}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+                isScrolled
+                    ? 'py-2 bg-white/80 dark:bg-primary-950/80 backdrop-blur-lg shadow-lg border-b border-primary-100/20'
+                    : 'py-3 bg-transparent'
+            }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between">
@@ -51,20 +52,19 @@ export default function Navbar({ onContactClick }) {
                     <Link 
                         to="/" 
                         onClick={() => handleNavClick('/#home')}
-                        className="flex items-center space-x-2 group"
+                        className="flex items-center space-x-3 group"
                     >
                         <img 
-                            src="logo.png" 
+                            src="/image.png" 
                             alt="Chartfield Services" 
-                            className="w-24 h-24 object-contain group-hover:scale-110 transition-transform duration-300 mix-blend-multiply" 
-                            style={{ isolation: 'isolate' }}
+                            className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300"
                         />
                         <div className="flex flex-col">
-                            <span className="text-xl font-bold text-primary-900 dark:text-primary-50 tracking-tight">
+                            <span className="text-lg font-bold text-primary-900 dark:text-primary-50 tracking-tight">
                                 Chartfield Services
                             </span>
                             <span className="text-[10px] text-primary-600 dark:text-primary-400 font-semibold uppercase tracking-[0.2em] -mt-1">
-                                Banking & Recovery
+                                Banking
                             </span>
                         </div>
                     </Link>
@@ -76,10 +76,11 @@ export default function Navbar({ onContactClick }) {
                                 key={link.name}
                                 to={link.href}
                                 onClick={() => handleNavClick(link.href)}
-                                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 ${location.pathname === link.href || (location.pathname === '/' && link.href.startsWith('/#'))
+                                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 ${
+                                    location.pathname === link.href || (location.pathname === '/' && link.href.startsWith('/#'))
                                         ? 'text-primary-600 dark:text-primary-400 bg-primary-50/50 dark:bg-primary-900/30'
                                         : 'text-gray-600 dark:text-primary-200 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50/50 dark:hover:bg-primary-900/30'
-                                    }`}
+                                }`}
                             >
                                 {link.name}
                             </Link>
